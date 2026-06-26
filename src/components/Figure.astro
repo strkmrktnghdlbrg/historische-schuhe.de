@@ -1,0 +1,28 @@
+---
+import type { ImageEntry } from '../lib/images.ts';
+interface Props {
+  image: ImageEntry;
+  alt: string;
+  caption?: boolean; // Bildnachweis sichtbar anzeigen (fuer grosse Bilder)
+}
+const { image, alt, caption = true } = Astro.props;
+---
+<figure class="fig">
+  <img src={image.src} alt={alt} loading="lazy" decoding="async" />
+  {caption && (
+    <figcaption>
+      Foto: {image.credit || 'Unbekannt'},{' '}
+      {image.licenseUrl ? <a href={image.licenseUrl} rel="nofollow noopener" target="_blank">{image.license}</a> : image.license},
+      {' '}via{' '}
+      <a href={image.source} rel="nofollow noopener" target="_blank">Wikimedia Commons</a>
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .fig{margin:0 0 26px}
+  .fig img{width:100%;height:auto;max-height:440px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--parchment-2)}
+  .fig figcaption{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4}
+  .fig figcaption a{color:var(--saddle);text-decoration:underline;text-underline-offset:2px}
+  .fig figcaption a:hover{color:var(--oxblood)}
+</style>

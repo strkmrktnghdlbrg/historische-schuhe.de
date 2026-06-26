@@ -1,0 +1,45 @@
+---
+import AmazonBox from './AmazonBox.astro';
+import asinData from '../data/amazon-asins.json';
+import products from '../data/amazon-products.json';
+
+interface Props {
+  /** Gruppen-Key aus amazon-asins.json (z.B. "mittelalterschuhe") */
+  group?: string;
+  /** Alternativ: direkte ASIN-Liste */
+  asins?: string[];
+  heading?: string;
+  intro?: string;
+}
+const { group, asins, heading, intro } = Astro.props;
+
+const groupObj = group ? (asinData as Record<string, any>)[group] : null;
+const list: string[] = asins ?? groupObj?.asins ?? [];
+const title = heading ?? groupObj?.title ?? null;
+
+// nur ASINs zeigen, zu denen es gefetchte Produktdaten gibt
+const available = list.filter((a) => (products as Record<string, any>)[a]?.title);
+---
+{available.length > 0 && (
+  <section class="amzgrid-wrap">
+    {title && (
+      <div class="amzgrid-head">
+        <h3>{title}</h3>
+        {intro && <p>{intro}</p>}
+      </div>
+    )}
+    <div class="amzgrid">
+      {available.map((asin) => <AmazonBox asin={asin} />)}
+    </div>
+    <p class="amzgrid-disc">Anzeige / Affiliate-Links: Kaufst du über diese Links, erhalten wir als Amazon-Partner eine Provision. Für dich entstehen keine Mehrkosten. Preise und Verfügbarkeit können abweichen, es gilt der auf Amazon angezeigte Preis.</p>
+  </section>
+)}
+
+<style>
+  .amzgrid-wrap { margin: 40px 0; }
+  .amzgrid-head { margin-bottom: 22px; }
+  .amzgrid-head h3 { font-size: 28px; letter-spacing: -0.01em; color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; }
+  .amzgrid-head p { color: #5a4634; font-size: 16px; margin-top: 6px; }
+  .amzgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .amzgrid-disc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 16px; }
+</style>

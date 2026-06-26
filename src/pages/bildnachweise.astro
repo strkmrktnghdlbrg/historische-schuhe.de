@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { allImages } from '../lib/images.ts';
+const list = allImages().sort((a, b) => a[1].title.localeCompare(b[1].title));
+---
+<BaseLayout title="Bildnachweise | historische-schuhe.de" description="Quellen und Lizenzen aller verwendeten Bilder auf historische-schuhe.de, durchgehend frei lizenziert über Wikimedia Commons.">
+  <section style="padding:52px 0">
+    <div class="wrap" style="max-width:900px">
+      <h1 style="font-size:42px;margin-bottom:14px">Bildnachweise</h1>
+      <p style="color:#5a4634;font-size:17px;margin-bottom:30px;max-width:680px">Alle Bilder auf dieser Seite stammen aus frei lizenzierten Beständen (Public Domain oder Creative Commons) und werden über Wikimedia Commons bezogen. Nachfolgend die vollständige Liste mit Urheber, Lizenz und Quelle.</p>
+      <ul class="credits">
+        {list.map(([slug, e]) => (
+          <li>
+            <img src={e.src} alt="" loading="lazy" />
+            <div>
+              <strong>{e.title}</strong>
+              <span>Foto: {e.credit || 'Unbekannt'} · {e.licenseUrl ? <a href={e.licenseUrl} rel="nofollow noopener" target="_blank">{e.license}</a> : e.license} · <a href={e.source} rel="nofollow noopener" target="_blank">Wikimedia Commons</a></span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .credits{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .credits li{display:flex;gap:16px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+  .credits img{width:84px;height:60px;object-fit:cover;border-radius:8px;border:1px solid var(--line);flex:none;background:var(--parchment-2)}
+  .credits strong{display:block;font-family:'Inter';font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+  .credits span{font-size:12.5px;color:var(--muted)}
+  .credits a{color:var(--saddle);text-decoration:underline;text-underline-offset:2px}
+  .credits a:hover{color:var(--oxblood)}
+</style>

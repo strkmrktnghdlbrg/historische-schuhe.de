@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getImage, getHeroImage } from '../lib/images.ts';
+
+const heroImg = getHeroImage();
+
+const allArtikel = (await getCollection('artikel')).sort(
+  (a, b) => Number(b.data.featured) - Number(a.data.featured)
+);
+const artikel = allArtikel.slice(0, 6);
+
+const covers = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+
+const silos = [
+  { id: 'epochen', num: 'SILO 01', ic: '🏛️', h: 'Nach Epoche', href: '/epochen/', p: 'Vom Caligae bis zur viktorianischen Stiefelette, historisch eingeordnet.', li: ['Antike: Römer & Griechen', 'Mittelalter & wendegenäht', 'Renaissance & Barock', '18. & 19. Jahrhundert'] },
+  { id: 'kulturen', num: 'SILO 02', ic: '🌍', h: 'Nach Kultur', href: '/kulturen/', p: 'Schuhtraditionen rund um den Globus, von China bis ans Osmanische Reich.', li: ['Chinesische Lotusschuhe', 'Japanische Geta', 'Indische Mojaris', 'Türkische Babuschen'] },
+  { id: 'schuhtypen', num: 'SILO 03', ic: '🥾', h: 'Nach Schuhtyp', href: '/schuhtypen/', p: 'Stiefel, Sandale, Pantoffel oder Schnallenschuh, direkt eingeordnet.', li: ['Mittelalterliche Stiefel', 'Antike Sandalen', 'Renaissance-Pantoffeln', 'Barocke Schnallenschuhe'] },
+  { id: 'ratgeber-silo', num: 'SILO 04', ic: '📖', h: 'Wissen & Pflege', href: '/ratgeber/', p: 'Damit dein Schuh passt, hält und nicht beim ersten Regen aufgibt.', li: ['Passform & Größen', 'Leder richtig pflegen', 'Echt- vs. Kunstleder', 'Geschichte der Schuhe'] },
+];
+
+const produkte = [
+  { cat: 'Wendegenäht · Markt', name: 'Klassischer Bundschuh', emoji: '👞', score: '4,3', stars: '★★★★☆', top: false, price: 'ca. 49 €', pros: [['pro', 'Sehr authentische Optik'], ['pro', 'Weiches, atmungsaktives Leder'], ['con', 'Dünne Sohle, wenig Dämpfung']] },
+  { cat: 'Vielseitig · LARP & Markt', name: 'Geschnürter Lederstiefel', emoji: '🥾', score: '4,7', stars: '★★★★★', top: true, price: 'ca. 89 €', pros: [['pro', 'Robust, gute Standfestigkeit'], ['pro', 'Passt zu vielen Epochen'], ['con', 'Braucht etwas Einlaufzeit']] },
+  { cat: 'Antike · Sommer', name: 'Römische Sandale', emoji: '🩴', score: '4,1', stars: '★★★★☆', top: false, price: 'ca. 35 €', pros: [['pro', 'Leicht, ideal bei Hitze'], ['pro', 'Günstiger Einstieg'], ['con', 'Nur für warme Veranstaltungen']] },
+];
+
+const epochen = [
+  { yr: 'um 100 n. Chr.', ic: '🏛️', h: 'Antike', p: 'Caligae, Sandalen und Legionärsschuhe der Römer und Griechen, leicht und luftig.', href: '/antike-sandalen-schuhe/' },
+  { yr: '5.–15. Jh.', ic: '⚔️', h: 'Mittelalter', p: 'Wendegenähte Bundschuhe und Schnabelschuhe, das Herzstück der Reenactment-Szene.', href: '/schuhe-im-mittelalter/' },
+  { yr: '16.–17. Jh.', ic: '👑', h: 'Renaissance & Barock', p: 'Schnallenschuhe und erste Absätze, repräsentativ und höfisch.', href: '/renaissance-schuhe/' },
+  { yr: '18.–20. Jh.', ic: '🎩', h: 'Neuzeit', p: 'Geschnürte Stiefeletten, viktorianische Eleganz und das Jahrhundert der Mode.', href: '/schuhe-viktorianischen-aera/' },
+];
+
+const faq = [
+  { q: 'Sind historische Schuhe alltagstauglich?', a: 'Viele wendegenähte Modelle sind für weichen Boden gemacht und haben dünne Sohlen. Für Asphalt, lange Markttage oder LARP lohnt sich oft ein robusterer Lederstiefel oder eine zusätzliche Einlegesohle.' },
+  { q: 'Wie finde ich die richtige Größe?', a: 'Historische Schuhe fallen häufig anders aus als moderne. Miss deine Fußlänge in Zentimetern und gleiche sie mit der Größentabelle des Herstellers ab. Unser Passform-Ratgeber zeigt dir Schritt für Schritt, wie du Fehlkäufe vermeidest.' },
+  { q: 'Echtleder oder Kunstleder, was ist besser?', a: 'Echtleder ist atmungsaktiver, langlebiger und altert schöner, kostet aber mehr und braucht Pflege. Kunstleder ist günstiger und pflegeleichter, wirkt aber weniger authentisch. Welche Wahl passt, hängt von Budget und Anlass ab.' },
+  { q: 'Wo kaufe ich historische Schuhe am besten?', a: 'Neben spezialisierten Reenactment-Shops bieten große Marktplätze und ihre Apps eine breite Auswahl mit einfacher Rückgabe. In unserem Shop- und App-Vergleich siehst du, welche Quelle für welchen Anspruch am besten passt.' },
+];
+---
+<BaseLayout
+  title="historische-schuhe.de: Mittelalterschuhe, Lederstiefel & Sandalen im ehrlichen Vergleich"
+  description="Historische und historisch inspirierte Schuhe, sortiert nach Epoche, Anlass und Schuhtyp. Ehrliche Vergleiche, Passform-Guides und Pflege-Tipps für Mittelalter, Reenactment, LARP und Trachten."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Mittelalter · Antike · Renaissance · Reenactment</span>
+        <h1>Historische Schuhe, die <em>wirklich</em> zu Epoche &amp; Anlass passen.</h1>
+        <p class="lead">Vom wendegenähten Mittelalterschuh über römische Sandalen bis zum robusten LARP-Stiefel: Wir sortieren historische und historisch inspirierte Schuhe nach Epoche, Stil und Schuhtyp und vergleichen ehrlich, was sich lohnt.</p>
+        <div class="hero-cta">
+          <a href="/mittelalterschuhe-vergleich/" class="btn btn-primary">Schuhe vergleichen →</a>
+          <a href="/epochen/" class="btn btn-ghost">Nach Epoche stöbern</a>
+        </div>
+        <div class="hero-trust">
+          <span><span class="dot"></span> <b>Nach Epoche</b> sortiert</span>
+          <span><span class="dot"></span> <b>Ehrliche</b> Vergleiche</span>
+          <span><span class="dot"></span> Passform &amp; <b>Pflege-Tipps</b></span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        {heroImg
+          ? <img class="hero-photo" src={heroImg.src} alt="Historischer Lederschuh" loading="eager" decoding="async" />
+          : <div class="grain"></div>}
+        <div class="hv-tag hv-1">⚒️ <b>Wendegenäht</b> · authentisch</div>
+        <div class="hv-tag hv-3"><span class="hstar">★★★★★</span> <b>4,7</b> Lederstiefel</div>
+        <div class="hv-tag hv-2">📐 <b>Passform-Guide</b> inklusive</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="wrap strip-in">
+      <div class="strip-it"><span class="ic">🏛️</span><div><h4>Nach Epoche geordnet</h4><p>Antike, Mittelalter, Renaissance, 18./19. Jh. sauber getrennt.</p></div></div>
+      <div class="strip-it"><span class="ic">⚖️</span><div><h4>Ehrlich verglichen</h4><p>Authentizität vs. Alltagstauglichkeit, ohne erfundene Testzahlen.</p></div></div>
+      <div class="strip-it"><span class="ic">📐</span><div><h4>Passform &amp; Pflege</h4><p>Größen-Guides und Lederpflege für lange Haltbarkeit.</p></div></div>
+      <div class="strip-it"><span class="ic">🛡️</span><div><h4>Für jeden Anlass</h4><p>Markt, LARP, Theater, Tracht oder Sammler-Vitrine.</p></div></div>
+    </div>
+  </div>
+
+  <!-- SILOS -->
+  <section id="epochen">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Finde deinen Schuh</span>
+        <h2>Vier Wege durch historische Schuhe</h2>
+        <p>Egal ob du nach Jahrhundert, nach Anlass oder schlicht nach Schuhtyp suchst: Hier startest du gezielt und landest beim passenden Vergleich.</p>
+      </div>
+      <div class="silos">
+        {silos.map((s) => (
+          <article class="silo" id={s.id}>
+            <div class="ic">{s.ic}</div>
+            <span class="num">{s.num}</span>
+            <h3>{s.h}</h3>
+            <p>{s.p}</p>
+            <ul>{s.li.map((x) => <li>{x}</li>)}</ul>
+            <a class="more" href={s.href}>Mehr ansehen →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- MONEY BLOCK -->
+  <section class="money" id="vergleich">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Vergleich des Monats</span>
+        <h2>Mittelalterschuhe im Vergleich</h2>
+        <p>Drei beliebte Modelle für Markt, LARP und Reenactment, gegenübergestellt nach Authentizität, Verarbeitung und Alltagstauglichkeit. Preise und Verfügbarkeit ändern sich, prüfe sie immer beim Händler.</p>
+      </div>
+      <div class="prods">
+        {produkte.map((p) => (
+          <article class={`pcard${p.top ? ' top' : ''}`}>
+            {p.top && <span class="ribbon">★ Top-Empfehlung</span>}
+            <div class="pthumb">{p.emoji}</div>
+            <div class="pbody">
+              <span class="pcat">{p.cat}</span>
+              <h3>{p.name}</h3>
+              <div class="prate"><span class="stars">{p.stars}</span><span class="score">{p.score}</span></div>
+              <ul class="pros">
+                {p.pros.map(([k, t]) => <li class={k}>{t}</li>)}
+              </ul>
+              <a href="/mittelalterschuhe-vergleich/" class="btn btn-primary">Beim Händler ansehen →</a>
+              <p class="pprice">ab {p.price} · Preis prüfen</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="aff-note">* Anzeige / Affiliate-Links: Kaufst du über einen markierten Link, erhalten wir ggf. eine kleine Provision. Für dich bleibt der Preis gleich. Bewertungen spiegeln eine redaktionelle Einschätzung wider, keine Labormessung.</p>
+    </div>
+  </section>
+
+  <!-- RATGEBER GRID -->
+  <section id="ratgeber">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Aus dem Magazin</span>
+        <h2>Ratgeber &amp; Kaufhilfen</h2>
+        <p>Praktische Guides zum Kaufen, Tragen und Pflegen historischer Schuhe.</p>
+      </div>
+      <div class="arts">
+        {artikel.map((a, i) => {
+          const img = getImage(a.id);
+          return (
+          <a href={`/${a.id}/`} class={`art${a.data.featured ? ' feat' : ''}`}>
+            {img
+              ? <div class="cover cover-img"><img src={img.src} alt={a.data.title} loading="lazy" decoding="async" /></div>
+              : <div class={`cover ${covers[i % covers.length]}`}>{a.data.icon}</div>}
+            <div class="abody">
+              {a.data.featured && <span class="featbadge">Affiliate-Guide</span>}
+              <span class="tag">{a.data.category}</span>
+              <h3>{a.data.title}</h3>
+              <p>{a.data.description}</p>
+              <div class="meta">📅 {a.data.updated ? 'Aktualisiert' : 'Ratgeber'} · {a.data.readMin} Min.</div>
+            </div>
+          </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- EPOCHE TIMELINE -->
+  <section class="epoche">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Zeitreise</span>
+        <h2>Schuhe nach Epoche</h2>
+        <p>Jede Epoche hat ihre eigene Schuhsprache. Wähle dein Jahrhundert und sieh dir die passenden Modelle und Ratgeber an.</p>
+      </div>
+      <div class="tl">
+        {epochen.map((e) => (
+          <a class="tl-it" href={e.href}>
+            <span class="yr">{e.yr}</span>
+            <div class="ic">{e.ic}</div>
+            <h3>{e.h}</h3>
+            <p>{e.p}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head" style="margin-left:auto;margin-right:auto;text-align:center">
+        <span class="eyebrow">Häufige Fragen</span>
+        <h2>Was du vor dem Kauf wissen solltest</h2>
+      </div>
+      <div class="faq-list">
+        {faq.map((f) => (
+          <div class="faq-it">
+            <h3><span class="q">F</span> {f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section>
+    <div class="wrap">
+      <div class="ctaband">
+        <h2>Bereit für deinen nächsten historischen Schuh?</h2>
+        <p>Starte mit unserem aktuellen Vergleich oder stöbere nach deiner Epoche. Ehrliche Einschätzungen, klare Empfehlungen, kein Marketing-Lärm.</p>
+        <a href="/mittelalterschuhe-vergleich/" class="btn btn-primary">Zu den Top-Empfehlungen →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero{position:relative;overflow:hidden;padding:76px 0 64px;background:
+    radial-gradient(800px 400px at 82% -10%,rgba(176,138,62,.16),transparent 60%),
+    radial-gradient(700px 480px at 6% 120%,rgba(124,45,42,.07),transparent 60%),
+    var(--parchment)}
+  .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center}
+  .hero h1{font-size:60px;font-weight:700;letter-spacing:-.02em;margin-bottom:18px;line-height:1.02}
+  .hero h1 em{font-style:italic;color:var(--oxblood)}
+  .hero p.lead{font-size:18.5px;color:#5a4634;max-width:540px;margin-bottom:28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .hero-trust{display:flex;gap:22px;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+  .hero-trust span{display:flex;align-items:center;gap:7px}
+  .hero-trust b{color:var(--saddle);font-weight:600}
+  .dot{width:6px;height:6px;border-radius:99px;background:var(--brass)}
+  .hero-visual{position:relative;height:360px;border-radius:18px;border:1px solid var(--line);
+    background:linear-gradient(150deg,#46331f,#2c1f14);overflow:hidden;box-shadow:0 32px 60px -22px rgba(42,29,18,.55)}
+  .hero-visual .grain{position:absolute;inset:0;opacity:.16;background-image:radial-gradient(rgba(227,197,133,.5) 1px,transparent 1px);background-size:13px 13px}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hv-tag{position:absolute;background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:11px;padding:9px 13px;font-size:12.5px;display:flex;align-items:center;gap:8px;box-shadow:0 10px 24px rgba(0,0,0,.3);color:var(--ink)}
+  .hv-tag b{color:var(--ink);font-weight:600}
+  .hv-1{top:24px;left:22px}
+  .hv-2{bottom:24px;right:20px}
+  .hv-3{bottom:104px;left:26px}
+  .hstar{color:var(--brass)}
+
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--parchment-2)}
+  .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:26px 0}
+  .strip-it{display:flex;gap:13px;align-items:flex-start}
+  .strip-it .ic{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--linen);display:grid;place-items:center;font-size:19px;flex:none}
+  .strip-it h4{font-size:18px;color:var(--ink);margin-bottom:1px}
+  .strip-it p{font-size:12.8px;color:var(--saddle);line-height:1.45}
+
+  .silos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .silo{position:relative;background:var(--linen);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;transition:.2s;overflow:hidden}
+  .silo:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,40,20,.35);border-color:#d6c4a6}
+  .silo .ic{font-size:30px;margin-bottom:14px}
+  .silo .num{font-weight:700;font-size:12px;color:var(--brass);letter-spacing:.12em}
+  .silo h3{font-size:25px;margin:6px 0 9px;color:var(--ink)}
+  .silo p{font-size:14px;color:#6a5440;margin-bottom:16px}
+  .silo ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0 0 18px;padding:0}
+  .silo li{font-size:13.5px;color:#5a4634;display:flex;align-items:center;gap:9px}
+  .silo li::before{content:'';width:5px;height:5px;border-radius:99px;background:var(--brass);flex:none}
+  .silo .more{font-size:14px;font-weight:600;color:var(--oxblood);display:inline-flex;align-items:center;gap:6px}
+
+  .money{background:var(--espresso);color:#f1e7d8}
+  .money .sec-head h2{color:#fbf2e3}
+  .money .sec-head p{color:#cbb79c}
+  .money .eyebrow{color:var(--brass-hi)}
+  .prods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+  .arts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .art{background:var(--linen);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+  .art:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,40,20,.32)}
+  .art .cover{height:160px;display:grid;place-items:center;font-size:54px;border-bottom:1px solid var(--line);overflow:hidden}
+  .art .cover-img{padding:0}
+  .art .cover-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .art .c1{background:linear-gradient(150deg,#e7d9c1,#d4bf9d)}
+  .art .c2{background:linear-gradient(150deg,#e2cfcb,#cdaaa4)}
+  .art .c3{background:linear-gradient(150deg,#dcd9c5,#c2bd99)}
+  .art .c4{background:linear-gradient(150deg,#e6dccb,#d0bfa3)}
+  .art .c5{background:linear-gradient(150deg,#ddd2c0,#c9b393)}
+  .art .c6{background:linear-gradient(150deg,#e4d6cd,#caa99c)}
+  .art .abody{padding:18px 19px 20px;display:flex;flex-direction:column;flex:1}
+  .art .tag{font-size:11.5px;font-weight:600;color:var(--brass);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+  .art h3{font-size:22px;margin-bottom:8px;line-height:1.12}
+  .art p{font-size:13.7px;color:#6a5440;margin-bottom:14px;flex:1}
+  .art .meta{font-size:12.5px;color:var(--muted);display:flex;gap:10px;align-items:center}
+  .art.feat{border-color:var(--oxblood);box-shadow:0 0 0 1px rgba(124,45,42,.25)}
+  .art .featbadge{display:inline-block;background:var(--oxblood);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;margin-bottom:9px;letter-spacing:.03em;width:fit-content}
+
+  .epoche{background:var(--parchment-2)}
+  .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .tl-it{background:var(--linen);border:1px solid var(--line);border-radius:14px;padding:24px 22px;transition:.2s}
+  .tl-it:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,40,20,.32)}
+  .tl-it .yr{font-family:'Cormorant Garamond';font-weight:700;font-size:15px;color:var(--oxblood);letter-spacing:.04em}
+  .tl-it .ic{font-size:34px;margin:6px 0 10px}
+  .tl-it h3{font-size:23px;margin-bottom:7px}
+  .tl-it p{font-size:13.3px;color:#6a5440}
+
+  .faq-list{display:flex;flex-direction:column;max-width:860px;margin:0 auto;border-top:1px solid var(--line)}
+  .faq-it{border-bottom:1px solid var(--line);padding:22px 4px}
+  .faq-it h3{font-size:23px;margin-bottom:9px;display:flex;gap:11px;align-items:baseline}
+  .faq-it h3 .q{color:var(--brass);font-size:16px;font-family:'Inter';font-weight:700}
+  .faq-it p{font-size:15px;color:#5a4634;padding-left:27px}
+
+  .ctaband{background:var(--oxblood);color:#fbeee7;border-radius:20px;padding:50px;text-align:center;position:relative;overflow:hidden}
+  .ctaband h2{color:#fff;font-size:38px;margin-bottom:12px}
+  .ctaband p{color:#f0d3cb;font-size:16.5px;max-width:560px;margin:0 auto 24px}
+  .ctaband .btn-primary{background:var(--linen);color:var(--oxblood)}
+  .ctaband .btn-primary:hover{background:#fff}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero h1{font-size:46px}
+    .silos,.prods,.arts,.tl,.strip-in{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .silos,.prods,.arts,.tl,.strip-in{grid-template-columns:1fr}
+    .hero h1{font-size:38px}
+    .ctaband{padding:36px 24px}
+  }
+</style>

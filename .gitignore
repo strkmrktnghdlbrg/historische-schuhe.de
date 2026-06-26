@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+releases/
+
+# Secrets: niemals committen (liegen zentral in ../../.secrets/)
+.env
+.env.*
+*.env
+.secrets/

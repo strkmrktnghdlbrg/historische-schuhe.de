@@ -1,0 +1,107 @@
+/* historische-schuhe.de - Design-System "Leder & Pergament" */
+
+:root{
+  --parchment:#f4ece0; --parchment-2:#ede2d2; --linen:#fffdf8;
+  --ink:#2a1d12; --espresso:#3d2c1d; --espresso-2:#2c1f14;
+  --oxblood:#7c2d2a; --oxblood-glow:#974039;
+  --brass:#b08a3e; --brass-hi:#e3c585; --brass-lo:#8a6a28;
+  --patina:#5f7355; --saddle:#8a6f52; --muted:#9a8770; --line:#e2d6c2;
+  --brass-grad:linear-gradient(180deg,#e3c585 0%,#b08a3e 55%,#8a6a28 100%);
+  --radius:14px; --maxw:1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--parchment);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;margin:0}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;line-height:1.08;letter-spacing:-.01em;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.brass-text{background:var(--brass-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(176,138,62,.5),transparent)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:12px 22px;border-radius:9px;cursor:pointer;border:1px solid transparent;transition:.18s;font-family:'Inter';text-align:center}
+.btn-primary{background:var(--oxblood);color:var(--linen);box-shadow:0 8px 20px -8px rgba(124,45,42,.55)}
+.btn-primary:hover{background:var(--oxblood-glow);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--saddle)}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(138,111,82,.08)}
+
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--saddle)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 11px;border-radius:99px;border:1px solid var(--line);color:var(--saddle);background:var(--linen)}
+
+/* NAV */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(244,236,224,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Cormorant Garamond';font-weight:700;font-size:23px;letter-spacing:-.01em;color:var(--ink)}
+.logo .mark{width:34px;height:34px;border-radius:9px;background:var(--espresso);display:grid;place-items:center;font-size:18px;box-shadow:inset 0 1px 1px rgba(227,197,133,.35),0 3px 8px rgba(42,29,18,.35)}
+.logo .tld{color:var(--muted);font-weight:500;font-family:'Inter';font-size:15px}
+.navlinks{display:flex;gap:26px;align-items:center;font-size:14.5px;font-weight:500;color:#5a4634}
+.navlinks a{position:relative;padding:4px 0;transition:.15s}
+.navlinks a:hover,.navlinks a.active{color:var(--oxblood)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.burger{display:none;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:9px;background:var(--linen);color:var(--saddle);cursor:pointer;font-size:18px}
+
+/* SECTION */
+section{padding:72px 0}
+.sec-head{max-width:680px;margin-bottom:42px}
+.sec-head h2{font-size:42px;letter-spacing:-.015em;margin:12px 0 12px}
+.sec-head p{color:#5a4634;font-size:16.5px}
+
+/* CARDS GENERIC */
+.card{background:var(--linen);border:1px solid var(--line);border-radius:var(--radius);transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,40,20,.35);border-color:#d6c4a6}
+
+/* PRODUCT CARD */
+.pcard{background:var(--linen);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative;transition:.2s;color:var(--ink)}
+.pcard:hover{box-shadow:0 20px 44px -18px rgba(0,0,0,.4);transform:translateY(-3px)}
+.pcard.top{border-color:var(--oxblood);box-shadow:0 0 0 1px var(--oxblood)}
+.pcard .ribbon{position:absolute;top:14px;right:0;background:var(--oxblood);color:#fff;font-size:11.5px;font-weight:700;padding:5px 13px;border-radius:7px 0 0 7px;letter-spacing:.03em}
+.pthumb{height:155px;background:linear-gradient(150deg,#efe4d2,#dcc9ab);display:grid;place-items:center;position:relative;border-bottom:1px solid var(--line);font-size:74px}
+.pbody{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.pcat{font-size:11.5px;font-weight:600;color:var(--saddle);text-transform:uppercase;letter-spacing:.08em}
+.pcard h3{font-size:23px;color:var(--ink);margin:6px 0 8px}
+.prate{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.stars{color:var(--brass);font-size:14px;letter-spacing:1px}
+.score{background:var(--ink);color:var(--linen);font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;font-family:'Inter'}
+.pros{font-size:13px;color:#5a4634;list-style:none;display:flex;flex-direction:column;gap:6px;margin:0 0 16px;padding:0}
+.pros li{display:flex;gap:8px;align-items:flex-start}
+.pros li.pro::before{content:'+';color:var(--patina);font-weight:700}
+.pros li.con::before{content:'−';color:var(--oxblood);font-weight:700}
+.pcard .btn{width:100%;justify-content:center;margin-top:auto}
+.pprice{font-size:12.5px;color:var(--muted);text-align:center;margin-top:9px}
+.aff-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:26px}
+
+/* FOOTER */
+.site-footer{background:var(--espresso-2);color:#cbb79c;padding:60px 0 30px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px;margin-bottom:36px}
+.fcol h5{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--brass-hi);margin:0 0 15px}
+.fcol a{display:block;font-size:14px;color:#cbb79c;margin-bottom:9px;transition:.15s}
+.fcol a:hover{color:#fff}
+.fcol.brand .logo{color:#fbf2e3}
+.fcol.brand p{font-size:13.8px;color:#a8987f;margin:12px 0 0;max-width:300px;line-height:1.6}
+.fbot{border-top:1px solid #4a3826;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.7px;color:var(--muted)}
+.fbot a{color:var(--muted)}
+.disc{background:rgba(176,138,62,.1);border:1px solid #4a3826;border-radius:10px;padding:14px 18px;font-size:12.5px;color:#a8987f;line-height:1.55}
+
+/* PROSE (article body) - light parchment */
+.prose{max-width:760px;color:#42342a;font-size:17px;line-height:1.78}
+.prose h2{font-size:30px;color:var(--ink);margin:42px 0 14px;letter-spacing:-.01em}
+.prose h3{font-size:24px;color:var(--ink);margin:30px 0 10px}
+.prose p{margin:0 0 18px}
+.prose ul,.prose ol{margin:0 0 18px;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.prose li{padding-left:4px}
+.prose a{color:var(--oxblood);text-decoration:underline;text-underline-offset:3px}
+.prose strong{color:var(--ink);font-weight:600}
+.prose blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 18px;margin:0 0 18px;color:#6a5440;font-style:italic}
+.prose table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
+.prose th,.prose td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+.prose th{background:var(--parchment-2);color:var(--ink)}
+
+@media(max-width:900px){
+  .navlinks{display:none}
+  .burger{display:grid}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .sec-head h2{font-size:32px}
+}

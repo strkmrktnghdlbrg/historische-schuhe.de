@@ -1,0 +1,74 @@
+{
+  "_comment": "Produktgruppen fuer historische-schuhe.de. Zwei Modi je Gruppe: (1) feste 'asins' eintragen -> GetItems holt genau diese. (2) 'keyword' (+ optional 'searchIndex', 'count') setzen und asins leer lassen -> SearchItems findet automatisch passende amazon.de-Produkte und traegt die gefundenen ASINs hier ein. <AmazonBoxGrid group='...' /> liest group.asins. Voraussetzung: gueltiger Partner-Tag in .secrets/amazon-paapi-historische-schuhe.env. Lauf: npm run amazon",
+  "mittelalterschuhe": {
+    "title": "Mittelalterschuhe bei Amazon",
+    "keyword": "Mittelalter Schuhe Leder",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0CH4NYQPR",
+      "B0CH4MBFM5",
+      "B0GJ4QR4LM"
+    ]
+  },
+  "lederstiefel": {
+    "title": "Mittelalter-Lederstiefel",
+    "keyword": "Mittelalter Lederstiefel Herren",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0FNQRS54Q",
+      "B0CH4MBFM5",
+      "B0CH4NYQPR",
+      "B0CH4PB251"
+    ]
+  },
+  "roemische-sandalen": {
+    "title": "Roemersandalen & antike Sandalen",
+    "keyword": "Roemersandalen Leder Herren",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B0GJ4QBCRY",
+      "B07S1TYSNQ",
+      "B06Y5MVX3K",
+      "B0036LRI4Q"
+    ]
+  },
+  "bundschuhe": {
+    "title": "Bundschuhe & wendegenaehte Schuhe",
+    "keyword": "Bundschuhe Mittelalter Leder",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B0F8NPPWS6",
+      "B0F8NP64XW",
+      "B0F8NPCNRH",
+      "B0GJ4QBCRY"
+    ]
+  },
+  "larp-stiefel": {
+    "title": "LARP- & Reenactment-Stiefel",
+    "keyword": "LARP Stiefel Leder",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B0CH4NHD76",
+      "B0CH4NYQPR",
+      "B0CH4MBFM5",
+      "B0F3JTS4C9"
+    ]
+  },
+  "schuhpflege": {
+    "title": "Lederpflege fuer historische Schuhe",
+    "keyword": "Lederfett Schuhpflege Leder",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B08B667HPT",
+      "B091CZMZRX",
+      "B007DJ566O",
+      "B079X567M2"
+    ]
+  }
+}

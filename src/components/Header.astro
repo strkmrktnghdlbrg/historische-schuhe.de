@@ -1,0 +1,39 @@
+---
+const path = Astro.url.pathname;
+const isActive = (p: string) => path === p || path.startsWith(p);
+const links = [
+  { href: '/epochen/', label: 'Epochen' },
+  { href: '/kulturen/', label: 'Kulturen' },
+  { href: '/schuhtypen/', label: 'Schuhtypen' },
+  { href: '/mittelalterschuhe-vergleich/', label: 'Vergleiche' },
+  { href: '/ratgeber/', label: 'Ratgeber' },
+];
+---
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="logo"><span class="mark">👞</span>historische-schuhe<span class="tld">.de</span></a>
+    <nav class="navlinks">
+      {links.map((l) => (
+        <a href={l.href} class={isActive(l.href) ? 'active' : ''}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="nav-cta">
+      <a href="/mittelalterschuhe-vergleich/" class="btn btn-primary" style="padding:10px 18px">Top-Empfehlungen</a>
+      <button class="burger" aria-label="Menü" id="burger">☰</button>
+    </div>
+  </div>
+  <div id="mobilemenu" style="display:none;border-top:1px solid var(--line);background:var(--linen)">
+    <div class="wrap" style="padding:14px 22px;display:flex;flex-direction:column;gap:4px">
+      {links.map((l) => (
+        <a href={l.href} style="padding:11px 0;color:#5a4634;border-bottom:1px solid var(--line);font-weight:500">{l.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+<script>
+  const b = document.getElementById('burger');
+  const m = document.getElementById('mobilemenu');
+  b?.addEventListener('click', () => {
+    if (m) m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  });
+</script>

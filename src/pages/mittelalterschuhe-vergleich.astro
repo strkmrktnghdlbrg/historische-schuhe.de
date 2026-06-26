@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AmazonBoxGrid from '../components/AmazonBoxGrid.astro';
+
+// Redaktionelle Einordnung (Platzhalter-Scores). Darunter echte Amazon-Produkte via PA-API.
+const produkte = [
+  { cat: 'Wendegenäht · Markt', name: 'Klassischer Bundschuh', emoji: '👞', score: '4,3', stars: '★★★★☆', top: false, price: 'ca. 49 €',
+    best: 'Beste authentische Optik fürs kleine Budget',
+    pros: ['Sehr authentische, historisch glaubwürdige Optik', 'Weiches, atmungsaktives Echtleder', 'Leicht und bequem auf weichem Boden'],
+    cons: ['Dünne Sohle, wenig Dämpfung auf Asphalt'] },
+  { cat: 'Vielseitig · LARP & Markt', name: 'Geschnürter Lederstiefel', emoji: '🥾', score: '4,7', stars: '★★★★★', top: true, price: 'ca. 89 €',
+    best: 'Bester Allrounder für mehrere Epochen',
+    pros: ['Robust mit guter Standfestigkeit', 'Passt optisch zu vielen Epochen', 'Hält auch lange Markttage durch'],
+    cons: ['Braucht etwas Einlaufzeit'] },
+  { cat: 'Antike · Sommer', name: 'Römische Sandale', emoji: '🩴', score: '4,1', stars: '★★★★☆', top: false, price: 'ca. 35 €',
+    best: 'Bester Einstieg für warme Veranstaltungen',
+    pros: ['Leicht und luftig, ideal bei Hitze', 'Günstiger Preiseinstieg', 'Schnell an- und ausgezogen'],
+    cons: ['Nur für warmes Wetter geeignet', 'Wenig Schutz auf rauem Untergrund'] },
+];
+---
+<BaseLayout
+  title="Mittelalterschuhe im Vergleich 2026: Bundschuh, Lederstiefel & Sandale | historische-schuhe.de"
+  description="Drei beliebte Mittelalterschuhe für Markt, LARP und Reenactment im ehrlichen Vergleich, gegenübergestellt nach Authentizität, Verarbeitung und Alltagstauglichkeit."
+  ogType="article"
+>
+  <section style="padding:52px 0 8px">
+    <div class="wrap" style="max-width:860px">
+      <span class="eyebrow">Vergleich des Monats</span>
+      <h1 style="font-size:48px;margin:12px 0 16px;line-height:1.05">Mittelalterschuhe im Vergleich</h1>
+      <p style="font-size:19px;color:#5a4634;line-height:1.6">Welcher historische Schuh passt zu deinem Anlass? Wir stellen drei beliebte Modelle für Markt, LARP und Reenactment gegenüber, sortiert nach Authentizität, Verarbeitung und Alltagstauglichkeit. Preise und Verfügbarkeit ändern sich, prüfe sie immer direkt beim Händler.</p>
+      <div class="aff-banner">Anzeige: Diese Seite enthält Affiliate-Links. Kaufst du über einen markierten Link, erhalten wir ggf. eine kleine Provision. Für dich bleibt der Preis gleich. Die Bewertungen sind eine redaktionelle Einschätzung, keine Labormessung.</div>
+    </div>
+  </section>
+
+  <section style="padding-top:34px">
+    <div class="wrap">
+      <div class="vgrid">
+        {produkte.map((p) => (
+          <article class={`pcard${p.top ? ' top' : ''}`}>
+            {p.top && <span class="ribbon">★ Top-Empfehlung</span>}
+            <div class="pthumb">{p.emoji}</div>
+            <div class="pbody">
+              <span class="pcat">{p.cat}</span>
+              <h3>{p.name}</h3>
+              <div class="prate"><span class="stars">{p.stars}</span><span class="score">{p.score}</span></div>
+              <p style="font-size:13.5px;color:#6a5440;font-style:italic;margin-bottom:12px">{p.best}</p>
+              <ul class="pros">
+                {p.pros.map((t) => <li class="pro">{t}</li>)}
+                {p.cons.map((t) => <li class="con">{t}</li>)}
+              </ul>
+              <a href="#" class="btn btn-primary" rel="sponsored nofollow">Beim Händler ansehen →</a>
+              <p class="pprice">ab {p.price} · Preis prüfen</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="aff-note">* Affiliate-Links (Anzeige). Als Amazon-Partner verdienen wir an qualifizierten Verkäufen. Stand der Angaben: laufend aktualisiert.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap" style="max-width:1100px">
+      <AmazonBoxGrid group="mittelalterschuhe" heading="Beliebte Mittelalterschuhe bei Amazon" intro="Aktuelle Modelle und Preise direkt von Amazon, automatisch aktualisiert." />
+    </div>
+  </section>
+
+  <section style="padding-top:20px">
+    <div class="wrap" style="max-width:860px">
+      <div class="prose">
+        <h2>Worauf es beim Kauf von Mittelalterschuhen ankommt</h2>
+        <p>Historische Schuhe unterscheiden sich deutlich von modernen Straßenschuhen. Bevor du dich für ein Modell entscheidest, lohnt sich ein Blick auf drei Punkte: den gewünschten Authentizitätsgrad, den tatsächlichen Einsatz und die Passform.</p>
+        <h3>Authentizität gegen Alltagstauglichkeit</h3>
+        <p>Wendegenähte Schuhe sind besonders glaubwürdig, weil sie der historischen Machart entsprechen. Ihre dünne Sohle ist auf weichem Waldboden angenehm, auf Asphalt oder Kopfsteinpflaster aber wenig gedämpft. Wer viel steht oder läuft, fährt mit einem robusteren Lederstiefel oder einer dezenten Einlegesohle oft besser.</p>
+        <h3>Material und Pflege</h3>
+        <p>Echtleder ist atmungsaktiv, langlebig und altert schön, braucht aber regelmäßige Pflege mit Lederfett oder Wachs. Wie du historische Lederschuhe richtig imprägnierst und pflegst, liest du in unserem <a href="/leder-pflegen-historische-schuhe/">Pflege-Ratgeber</a>. Bei der Größe helfen unsere Hinweise zur <a href="/schuhgroesse-passform-historische-schuhe/">Passform historischer Schuhe</a>.</p>
+        <p>Du bist dir bei der Bezugsquelle unsicher? In unserem <a href="/beste-shops-apps-historische-schuhe-kaufen/">Shop- und App-Vergleich</a> zeigen wir, wo du historische Schuhe mit guter Auswahl und einfacher Rückgabe kaufst.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .aff-banner{margin-top:22px;background:rgba(176,138,62,.12);border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-size:13px;color:#6a5440}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  @media(max-width:900px){.vgrid{grid-template-columns:1fr}}
+</style>

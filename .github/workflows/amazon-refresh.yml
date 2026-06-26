@@ -1,0 +1,58 @@
+name: Amazon-Produktdaten aktualisieren
+
+# Holt woechentlich frische amazon.de-Produktdaten via PA-API und committet
+# src/data/amazon-products.json + amazon-asins.json zurueck ins Repo.
+# Voraussetzung: Repository-Secrets AMAZON_PAAPI_ACCESS_KEY, AMAZON_PAAPI_SECRET_KEY,
+# AMAZON_PARTNER_TAG (Settings -> Secrets and variables -> Actions).
+# Keys liegen NIE im Code/Repo, nur als Secrets.
+
+on:
+  schedule:
+    - cron: "0 4 * * 1" # jeden Montag 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: amazon-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch Amazon products
+        env:
+          AMAZON_PAAPI_ACCESS_KEY: ${{ secrets.AMAZON_PAAPI_ACCESS_KEY }}
+          AMAZON_PAAPI_SECRET_KEY: ${{ secrets.AMAZON_PAAPI_SECRET_KEY }}
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
+          AMAZON_HOST: webservices.amazon.de
+          AMAZON_REGION: eu-west-1
+          AMAZON_MARKETPLACE: www.amazon.de
+        run: npm run amazon
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/amazon-products.json src/data/amazon-asins.json
+          if git diff --cached --quiet; then
+            echo "Keine Aenderungen an Produktdaten."
+          else
+            git commit -m "chore(amazon): Produktdaten aktualisiert [skip ci]"
+            git push
+          fi

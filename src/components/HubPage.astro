@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import type { SiloKey } from '../data/silos.ts';
+import { getImage } from '../lib/images.ts';
+
+interface Props {
+  silo: SiloKey;
+  eyebrow: string;
+  title: string;
+  intro: string;
+}
+const { silo, eyebrow, title, intro } = Astro.props;
+const artikel = (await getCollection('artikel'))
+  .filter((a) => a.data.silo === silo)
+  .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+---
+<section class="hub-hero">
+  <div class="wrap">
+    <span class="eyebrow">{eyebrow}</span>
+    <h1>{title}</h1>
+    <p>{intro}</p>
+  </div>
+</section>
+<section style="padding-top:40px">
+  <div class="wrap">
+    {artikel.length === 0 ? (
+      <p style="color:var(--muted)">Inhalte zu diesem Bereich folgen in Kürze.</p>
+    ) : (
+      <div class="hub-grid">
+        {artikel.map((a) => {
+          const img = getImage(a.id);
+          return (
+          <a href={`/${a.id}/`} class={`hcard${a.data.featured ? ' feat' : ''}`}>
+            {img
+              ? <div class="hic"><img src={img.src} alt={a.data.title} loading="lazy" decoding="async" /></div>
+              : <div class="hic hic-ico">{a.data.icon}</div>}
+            <div class="hbody">
+              {a.data.type === 'money' && <span class="mbadge">Vergleich</span>}
+              <span class="htag">{a.data.category}</span>
+              <h3>{a.data.title}</h3>
+              <p>{a.data.description}</p>
+              <span class="hmore">Weiterlesen →</span>
+            </div>
+          </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hub-hero{padding:56px 0 8px;background:
+    radial-gradient(700px 320px at 85% -20%,rgba(176,138,62,.14),transparent 60%),var(--parchment)}
+  .hub-hero h1{font-size:50px;letter-spacing:-.02em;margin:12px 0 14px;line-height:1.04}
+  .hub-hero p{font-size:18px;color:#5a4634;max-width:680px}
+  .hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hcard{background:var(--linen);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .hcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,40,20,.32)}
+  .hic{height:160px;display:grid;place-items:center;background:linear-gradient(150deg,#e7d9c1,#d4bf9d);border-bottom:1px solid var(--line);overflow:hidden}
+  .hic.hic-ico{font-size:46px}
+  .hic img{width:100%;height:100%;object-fit:cover;display:block}
+  .hcard.feat .hic.hic-ico{background:linear-gradient(150deg,#e2cfcb,#cdaaa4)}
+  .hbody{padding:18px 19px 20px;display:flex;flex-direction:column;flex:1}
+  .mbadge{display:inline-block;background:var(--oxblood);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;margin-bottom:9px;width:fit-content}
+  .htag{font-size:11.5px;font-weight:600;color:var(--brass);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+  .hcard h3{font-size:22px;margin-bottom:8px;line-height:1.12}
+  .hcard p{font-size:13.7px;color:#6a5440;margin-bottom:14px;flex:1}
+  .hmore{font-size:13.5px;font-weight:600;color:var(--oxblood)}
+  @media(max-width:900px){.hub-grid{grid-template-columns:1fr 1fr}.hub-hero h1{font-size:38px}}
+  @media(max-width:600px){.hub-grid{grid-template-columns:1fr}}
+</style>
