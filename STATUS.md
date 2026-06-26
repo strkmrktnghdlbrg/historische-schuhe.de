@@ -43,13 +43,19 @@
 - **210 interne Body-Links über 42 Artikel** (Ø 5/Artikel), **jeder Artikel ≥3**, **0 kaputte Ziele** (geprüft). Spiderweb: Silo + Epochen-Familie bevorzugt, Brücken zu Pflege/Passform/Vergleich. Build grün, 54 Seiten.
 - Reusable: `scripts/articles-index.mjs`, `scripts/gen-link-workflow.mjs`, `scripts/link-workflow.mjs`.
 
+## Amazon PA-API + Git KOMPLETT (2026-06-26)
+- **PA-API aktiv**, Tag `historische-schuhe.de-21`. `scripts/fetch-amazon.mjs` (SigV4, GetItems/SearchItems) + `npm run amazon`. **18 Produkte / 6 Gruppen** (mittelalterschuhe, lederstiefel, roemische-sandalen, bundschuhe, larp-stiefel, schuhpflege) in `src/data/amazon-products.json` (+ asins.json). Keys NUR in `.secrets/amazon-paapi-historische-schuhe.env` (chmod 600, außerhalb Git) — **nie committet**.
+- Komponenten `AmazonBox.astro` + `AmazonBoxGrid.astro` (Leder-Theme), Schema-Feld `amazonGroup`. Eingebunden: `/mittelalterschuhe-vergleich/`, neue `/lederstiefel-vergleich/`, + 7 Artikel via `amazonGroup`. rel="sponsored nofollow noopener".
+- **Git-Repo initialisiert** (Initial Commit `92eee1d`, Branch main), `.gitignore` schützt secrets/env. GitHub-Action `amazon-refresh.yml` (wöchentlich, Repo-Secrets) committet frische Produktdaten zurück.
+- **ClickUp** Task `869cvcu0c` aktualisiert: Status „live site", Theme=Astro, Monetization=amz+adsense, Kommentar mit Vollstatus. AMZ ID war bereits korrekt.
+- PA-API liefert aktuell teils KEINE Preise → Box-Fallback „Bei Amazon ansehen" (greift, normalisiert sich mit Account-Reife).
+
 ## OFFEN (To-Dos)
-1. **Echte Amazon-Produkte/ASINs** in Money-Seiten (`mittelalterschuhe-vergleich`, Tag `historische-schuhe.de-21` steht). Aktuell Platzhalter-Emojis/-Preise.
-2. Optional: Bild für `schuhe-der-1980er-jahre` (Sneaker) gezielt nachliefern.
-3. **Semrush-Keyword-Recherche** je Silo zur weiteren Priorisierung/Optimierung.
-4. **GTM-ID** (offen, „kommt noch") + restliche Impressum-Daten (Webmagics HE-Nr.) + Hosting/Deploy (GitHub Actions, www→non-www 301, alte `/thema/`-Kategorien → Hub-301, `/thema/farbige-hosentrager/` → 410/301).
-5. Inhaltliches Feinlektorat der 30 Workflow-Artikel (Stichprobe top, Vollcheck empfohlen).
-6. Mobile-Menü ggf. auf Pattern B (Slide-in-Drawer) angleichen.
+1. **GitHub-Remote + Deploy**: Repo pushen (Remote anlegen), Hosting/Deploy bestätigen → Deploy-Action (analog diaet-community), www→non-www 301, `/thema/`-Kategorien → Hub-301, `/thema/farbige-hosentrager/` → 410. **Mein Commit ist lokal, noch nicht deployed.**
+2. Repo-Secrets in GitHub setzen (AMAZON_PAAPI_ACCESS_KEY/SECRET_KEY/PARTNER_TAG) damit `amazon-refresh.yml` läuft.
+3. **GTM-ID** („kommt noch") + restliche Impressum-Daten (Webmagics HE-Nr.).
+4. ASIN-/Keyword-Feinschliff (mehr Authentizität, echte Preise), optional 1980er-Sneaker-Bild.
+5. Semrush-Recherche, Feinlektorat, Mobile-Menü Pattern B.
 
 ## Befehle
 - Dev: `npm run dev --prefix "Affiliate projects/historische-schuhe.de" -- --port 4878`
