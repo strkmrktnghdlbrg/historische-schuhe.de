@@ -1,0 +1,69 @@
+name: Build & Deploy to cPanel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Build report
+        run: |
+          echo "Built files: $(find dist -type f | wc -l)"
+          echo "Total size: $(du -sh dist | cut -f1)"
+
+      - name: Commit dist/ to main
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f dist/
+          git diff --staged --quiet || git commit -m "build: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          git pull origin main --rebase
+          git push origin main
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: nl1-ts109.a2hosting.com
+          username: ${{ secrets.CPANEL_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/kdwwnlqe/historische-schuhe.de/astro-site
+            git fetch origin main
+            git checkout main
+            git pull origin main
+            chmod 755 /home/kdwwnlqe
+            chmod 755 /home/kdwwnlqe/historische-schuhe.de
+            chmod 755 /home/kdwwnlqe/historische-schuhe.de/astro-site
+            find dist -type d -exec chmod 755 {} \;
+            find dist -type f -exec chmod 644 {} \;
+            echo "Permissions fixed."
