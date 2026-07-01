@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://historische-schuhe.de/sitemap-index.xml
