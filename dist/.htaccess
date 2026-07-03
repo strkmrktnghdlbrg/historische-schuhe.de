@@ -14,6 +14,24 @@
   # non-www → www
   RewriteCond %{HTTP_HOST} ^historische-schuhe\.de [NC]
   RewriteRule ^ https://www.historische-schuhe.de%{REQUEST_URI} [R=301,L]
+
+  # Alte WordPress-/thema/-Taxonomie → neue Silo-Hubs/Artikel (301)
+  RewriteRule ^thema/farbige-hosentrager/?$   /                              [R=301,L]
+  RewriteRule ^thema/renaissance/?$           /renaissance-schuhe/           [R=301,L]
+  RewriteRule ^thema/18-jahrhunderts/?$       /schuhe-des-18-jahrhunderts/   [R=301,L]
+  RewriteRule ^thema/19-jahrhunderts/?$       /schuhe-des-19-jahrhunderts/   [R=301,L]
+  RewriteRule ^thema/20-jahrhunderts/?$       /schuhe-des-20-jahrhunderts/   [R=301,L]
+  RewriteRule ^thema/mittelalterliche/?$      /schuhe-im-mittelalter/        [R=301,L]
+  RewriteRule ^thema/antike/?$                /epochen/                      [R=301,L]
+  RewriteRule ^thema/militaerisch/?$          /epochen/                      [R=301,L]
+  RewriteRule ^thema/adlig/?$                 /epochen/                      [R=301,L]
+  RewriteRule ^thema/koeniglich/?$            /epochen/                      [R=301,L]
+  RewriteRule ^thema/kulturen/?$              /kulturen/                     [R=301,L]
+  RewriteRule ^thema/schuhe/?$                /schuhtypen/                   [R=301,L]
+  RewriteRule ^thema/schuhe-kleidung/?$       /ratgeber/                     [R=301,L]
+  RewriteRule ^thema/schuhmacherei/?$         /ratgeber/                     [R=301,L]
+  # Catch-all fuer restliche /thema/-Pfade
+  RewriteRule ^thema/                         /                              [R=301,L]
 </IfModule>
 
 # ---------------------------------------------------------------------------
