@@ -7,6 +7,7 @@ category: "Wissen"
 icon: "⚒️"
 pubDate: 2026-06-04
 readMin: 9
+amazonGroup: "bundschuhe"
 ---
 
 Wer sich mit Mittelalterschuhen beschäftigt, stößt schnell auf den Begriff wendegenäht. Dahinter steckt die historische Machart, die einen Großteil der authentischen Schuhe der [Reenactment-Szene](/schuhe-erster-mittelaltermarkt-einsteiger/) ausmacht.

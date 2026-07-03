@@ -9,6 +9,7 @@ icon: "👞"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 6
+amazonGroup: "viktorianische-stiefel"
 ---
 
 Kaum ein Jahrhundert hat den Schuh so tiefgreifend verändert wie das 19. Vom zarten Biedermeier-Schläppchen bis zum derben [Schnürstiefel](/stiefel-schuhe-19-jahrhunderts/) der Gründerzeit spiegelt das Schuhwerk dieser Epoche den gesamten gesellschaftlichen Umbruch wider: Industrialisierung, ein selbstbewusstes Bürgertum und eine Mode, die sich immer schneller wandelte. Wer historische Schuhe verstehen will, findet hier einen kompakten Begleiter, der Stil und Gesellschaft zusammen denkt.

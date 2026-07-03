@@ -9,6 +9,7 @@ icon: "🎩"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "viktorianische-stiefel"
 ---
 
 Im 19. Jahrhundert veränderte sich kaum etwas am Alltag so grundlegend wie das, was die Menschen an den Füßen trugen. Aus einem teuren, von Hand gefertigten Einzelstück wurde nach und nach eine Ware, die viele kaufen konnten, und zwar in einer Form, die wir heute noch wiedererkennen.

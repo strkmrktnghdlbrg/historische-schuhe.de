@@ -9,6 +9,7 @@ icon: "👑"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "barockschuhe"
 ---
 
 Wer am Hof von Versailles auf sich hielt, achtete nicht nur auf Perücke und Spitzenkragen, sondern ganz besonders auf die Füße. Der Schuh war dort kein nebensächliches Detail, sondern ein sichtbares Zeichen für Rang, Nähe zum König und die Zugehörigkeit zu einer Welt, in der Erscheinung und Macht untrennbar zusammengehörten.

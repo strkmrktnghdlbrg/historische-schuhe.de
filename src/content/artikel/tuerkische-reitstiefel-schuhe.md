@@ -9,6 +9,7 @@ icon: "🐎"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "lederstiefel"
 ---
 
 Das Osmanische Reich war über Jahrhunderte eine Reitermacht, und an den Füßen seiner Reiter steckte ein Schuhwerk, das ganz auf das Leben im Sattel zugeschnitten war. Hohe, weiche Lederstiefel prägten das Bild der osmanischen Kavallerie und wirkten weit über die Grenzen des Reiches hinaus bis nach Mittel- und Westeuropa.

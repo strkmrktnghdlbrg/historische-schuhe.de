@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getImage, getHeroImage } from '../lib/images.ts';
+import AmazonBoxGrid from '../components/AmazonBoxGrid.astro';
 
 const heroImg = getHeroImage();
 
@@ -131,6 +132,14 @@ const faq = [
         ))}
       </div>
       <p class="aff-note">* Anzeige / Affiliate-Links: Kaufst du über einen markierten Link, erhalten wir ggf. eine kleine Provision. Für dich bleibt der Preis gleich. Bewertungen spiegeln eine redaktionelle Einschätzung wider, keine Labormessung.</p>
+    </div>
+  </section>
+
+  <!-- AMAZON BOXES -->
+  <section id="shop" style="padding-top:0">
+    <div class="wrap">
+      <AmazonBoxGrid group="mittelalterschuhe" heading="Historische Schuhe direkt bei Amazon" intro="Beliebte Mittelalterschuhe und Lederstiefel, aktuelle Auswahl und Preise." />
+      <AmazonBoxGrid group="roemische-sandalen" heading="Antike Sandalen & Roemersandalen" />
     </div>
   </section>
 

@@ -9,6 +9,7 @@ icon: "⚔️"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "mittelalterschuhe"
 ---
 
 Wer im Mittelalter lebte, ging fast immer zu Fuß, und das hieß: Schuhe waren kein modisches Beiwerk, sondern ein tägliches Arbeitsgerät. Was jemand an den Füßen trug, verriet zugleich erstaunlich viel über Stand, Beruf und Geldbeutel. In diesem Beitrag schauen wir weniger auf die Naht und mehr auf den Alltag: wer trug was, woraus war es gemacht, und wie hielt man Schuhe in einer Zeit ohne Schuhgeschäft an der Ecke überhaupt am Leben.

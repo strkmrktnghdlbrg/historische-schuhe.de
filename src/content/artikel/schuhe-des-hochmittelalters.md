@@ -9,6 +9,7 @@ icon: "🏰"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "mittelalterschuhe"
 ---
 
 Zwischen 1000 und 1250 verändert sich das europäische Schuhwerk spürbar. Aus dem schlichten Lederbeutel der Frühzeit wird ein handwerklich durchdachtes Produkt, das in den wachsenden Städten von spezialisierten Meistern gefertigt wird. Wer sich für diese Epoche interessiert, stößt schnell auf einen roten Faden: zunehmende Vielfalt bei Form, Verschluss und Verzierung.

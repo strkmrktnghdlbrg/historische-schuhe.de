@@ -9,6 +9,7 @@ icon: "🏺"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "roemische-sandalen"
 ---
 
 Im antiken Griechenland war der nackte Fuß kein Notbehelf, sondern oft eine bewusste Haltung. Wer dennoch etwas trug, entschied sich meist für offene, leichte Lederlösungen, die zum warmen Klima passten. Zwischen dem barfüßigen Alltag und der kunstvoll geschnürten Sandale liegt eine ganze Welt von Formen, die wir heute nur noch aus Vasenbildern, Statuen und Schriftquellen kennen.

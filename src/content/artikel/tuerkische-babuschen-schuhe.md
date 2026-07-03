@@ -9,6 +9,7 @@ icon: "🥿"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 6
+amazonGroup: "orient-slipper"
 ---
 
 Babuschen gehören zu den charakteristischen Schuhformen des Orients: weich, leicht und hinten offen, sodass man hineinschlüpft, ohne sich zu bücken. Über Jahrhunderte begleiteten sie das Alltagsleben im Osmanischen Reich und in Nordafrika, und noch heute begegnet dir der Begriff im Handel als Synonym für bequeme Lederpantoffeln.

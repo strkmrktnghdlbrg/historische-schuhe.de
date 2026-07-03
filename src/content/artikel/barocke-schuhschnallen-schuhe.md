@@ -9,6 +9,7 @@ icon: "✨"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 6
+amazonGroup: "barockschuhe"
 ---
 
 Wer im 17. und 18. Jahrhundert auf den Schuh eines Wohlhabenden blickte, sah dort nicht nur Leder, sondern oft das teuerste Detail des ganzen Schuhs. Die Schnalle war ein eigenständiges Schmuckstück, getragen, getauscht und manchmal vererbt wie ein Ring.

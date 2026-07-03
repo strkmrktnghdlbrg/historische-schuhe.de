@@ -8,6 +8,7 @@ icon: "👑"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "barockschuhe"
 ---
 
 Lange bevor Logos und Preisschilder existierten, las man den Rang eines Menschen an seinen Füßen ab. Schuhe und Kleidung waren über Jahrhunderte eine stille, aber unmissverständliche Sprache, die jedem Betrachter sofort verriet, wer vor ihm stand: Herrscher oder Bauer, Freier oder Unfreier, Geweihter oder Laie.

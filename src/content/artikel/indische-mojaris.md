@@ -9,6 +9,7 @@ icon: "🪷"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "mojari"
 ---
 
 Wenige Schuhe verbinden Handwerk und Prunk so unmittelbar wie die indische Mojari. Die flachen Lederschuhe mit ihrer oft hochgebogenen Spitze und der dichten Stickerei begegnen dir bis heute auf Hochzeiten, Festen und in den Erzählungen über die alten Fürstenhöfe.

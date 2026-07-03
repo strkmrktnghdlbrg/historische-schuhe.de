@@ -9,6 +9,7 @@ icon: "🥿"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "barockschuhe"
 ---
 
 Wenn von der Renaissance die Rede ist, denken die meisten an Gemälde, Architektur und prachtvolle Gewänder. Doch unter den schweren Stoffsäumen verbarg sich ein eigenes kleines Schauspiel der Eitelkeit: Pantoffeln und vor allem die hohe Chopine, ein Plateau-Überschuh, der Trägerinnen buchstäblich über den Alltag erhob.

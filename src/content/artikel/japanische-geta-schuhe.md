@@ -9,6 +9,7 @@ icon: "🎋"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "geta"
 ---
 
 Die Geta ist eine der bekanntesten Schuhformen Japans: eine erhöhte Holzsandale, die man bis heute zu [traditioneller Kleidung](/macht-kleidung/) sieht. Anders als viele [historische Schuhe](/beste-shops-apps-historische-schuhe-kaufen/) ist sie keine reine Museumsform, sondern lebendige Tradition.

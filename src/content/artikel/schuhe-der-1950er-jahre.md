@@ -9,6 +9,7 @@ icon: "👠"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "vintage-schuhe"
 ---
 
 Die 1950er waren das Jahrzehnt, in dem der Schuh wieder zur Schau gestellt wurde. Nach den kargen Kriegsjahren feierte die Mode den schmalen Absatz, das zweifarbige Leder und eine neue, junge Lebenslust, die sich vom Petticoat bis zur Tanzfläche zog.

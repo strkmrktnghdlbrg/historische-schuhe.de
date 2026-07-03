@@ -8,6 +8,7 @@ icon: "🧭"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "schuhpflege"
 ---
 
 Ein guter Schuh verrät sich nicht am Etikett, sondern in der Hand und am Fuß. Ob mittelalterlicher Wendeschuh, barocke Schnalle oder moderner Rahmengenähter: Die Grundregeln für Qualität ähneln sich erstaunlich über die Jahrhunderte hinweg. Wer sie kennt, kauft seltener daneben und länger zufrieden.

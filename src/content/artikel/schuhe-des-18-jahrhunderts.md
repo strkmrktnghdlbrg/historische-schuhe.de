@@ -9,6 +9,7 @@ icon: "🎩"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "barockschuhe"
 ---
 
 Kaum eine Epoche hat den Schuh so sehr zum kleinen Kunstwerk erhoben wie das 18. Jahrhundert. Zwischen geschwungenen Absätzen, schimmernder Seide und blitzenden Schnallen wurde aus einem Gebrauchsgegenstand ein Statussymbol, das am Hof von Versailles ebenso gelesen wurde wie ein gut sitzender Rock.

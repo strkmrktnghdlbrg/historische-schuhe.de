@@ -9,6 +9,7 @@ icon: "🏛️"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "roemische-sandalen"
 ---
 
 Kaum ein Schuh der Antike ist so bekannt wie die Caliga, der genagelte Marschschuh der römischen Legionäre. Sie war kein modisches Accessoire, sondern hochfunktionales militärisches Gerät, und sie erzählt viel über die Logistik des römischen Heeres.

@@ -9,6 +9,7 @@ icon: "🏛️"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "roemische-sandalen"
 ---
 
 Wer an römische Schuhe denkt, hat oft sofort die genagelte Soldatensandale vor Augen. Doch das antike Rom kannte ein weit differenzierteres System, in dem die Wahl des Schuhwerks fast immer etwas über Rang, Anlass und sogar über den Ort verriet, an dem man sich gerade aufhielt.

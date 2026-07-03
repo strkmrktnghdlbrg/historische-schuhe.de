@@ -7,6 +7,7 @@ category: "Passform"
 icon: "📐"
 pubDate: 2026-06-08
 readMin: 8
+amazonGroup: "schuhpflege"
 ---
 
 Historische Schuhe nach moderner Konfektionsgröße zu bestellen, geht oft schief. Die [Machart, das Leder](/a-und-o-schuhe/) und die fehlende Standardisierung sorgen dafür, dass die gleiche Nummer von Hersteller zu Hersteller spürbar unterschiedlich ausfällt. Mit ein paar einfachen Schritten vermeidest du Fehlkäufe.

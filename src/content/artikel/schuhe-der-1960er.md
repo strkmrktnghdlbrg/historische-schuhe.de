@@ -9,6 +9,7 @@ icon: "👢"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "vintage-schuhe"
 ---
 
 Kaum ein Schuh steht so sehr für ein ganzes Jahrzehnt wie der weiße Go-go-Boot der 1960er Jahre. Wer an die Sechziger denkt, sieht fast automatisch glänzende Stiefel, kurze Röcke und eine Jugend, die mit der gesetzten Eleganz ihrer Eltern brechen wollte. Dieser Wandel war keine reine Modelaune, sondern Ausdruck eines tiefen kulturellen Umbruchs.

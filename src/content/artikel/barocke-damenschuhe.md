@@ -9,6 +9,7 @@ icon: "👠"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "barockschuhe"
 ---
 
 Im Barock verwandelte sich der Damenschuh von einem schlichten Gebrauchsgegenstand in ein höfisches Schaustück. Wer am Hof bestehen wollte, zeigte es bis in die Fußspitze, mit hohem Absatz, schimmernder Seide und kostbarer Stickerei.

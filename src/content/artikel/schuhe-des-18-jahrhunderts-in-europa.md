@@ -9,6 +9,7 @@ icon: "🗺️"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "barockschuhe"
 ---
 
 Wer im 18. Jahrhundert von Paris nach London und weiter in eine deutsche Residenzstadt reiste, sah dem Schnallenschuh am Fuß durchaus an, woher sein Träger kam. Die Grundform ähnelte sich überall, doch Absatzhöhe, Leder, Schnalle und der Anlass, zu dem man bestimmte Schuhe trug, erzählten von unterschiedlichen Gesellschaften.

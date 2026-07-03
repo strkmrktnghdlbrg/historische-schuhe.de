@@ -9,6 +9,7 @@ icon: "🏛️"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "roemische-sandalen"
 ---
 
 Wenn du dir die antike Welt rund um das Mittelmeer als barfuß und sonnengebräunt vorstellst, liegst du gar nicht so falsch, doch der Schuh dieser Epoche hatte einen klaren Namen: die Sandale. Sie war leicht, an das warme Klima angepasst und gleichzeitig ein erstaunlich vielsagendes Statussymbol. In diesem Überblick schauen wir uns an, woraus die Antike ihre Sandalen baute, wie sich Riemen und Formen unterschieden und warum ein Schuh in Griechenland, Rom und im Orient mehr verriet als nur den Modegeschmack.

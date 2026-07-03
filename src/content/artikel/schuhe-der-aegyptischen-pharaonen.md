@@ -9,6 +9,7 @@ icon: "👑"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "roemische-sandalen"
 ---
 
 Im alten Ägypten war der Schuh weit mehr als ein Schutz für den Fuß. Sandalen markierten gesellschaftlichen Rang, und an der Spitze der Ordnung standen die Pharaonen, deren Fußbekleidung Macht und göttlichen Anspruch ausdrückte.

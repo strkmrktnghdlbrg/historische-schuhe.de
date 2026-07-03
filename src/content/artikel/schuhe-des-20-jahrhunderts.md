@@ -9,6 +9,7 @@ icon: "👟"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 9
+amazonGroup: "vintage-schuhe"
 ---
 
 Kein anderes Jahrhundert hat den Schuh so grundlegend umgekrempelt wie das zwanzigste. Wer um 1900 einen hohen Knopfstiefel mit dem Stiefelhaken schloss und das Jahrhundert in Turnschuhen mit Klettverschluss beendete, hat einen kompletten Kulturwandel an den eigenen Füßen erlebt. Dieser Überblick spannt den Bogen von der Belle Époque bis zur Designermode und zeigt, wie Krieg, Technik, Sport und Mode den Schuh immer wieder neu erfanden.

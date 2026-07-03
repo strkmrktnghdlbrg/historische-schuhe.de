@@ -1,36 +1,40 @@
 {
-  "_comment": "Produktgruppen fuer historische-schuhe.de. Zwei Modi je Gruppe: (1) feste 'asins' eintragen -> GetItems holt genau diese. (2) 'keyword' (+ optional 'searchIndex', 'count') setzen und asins leer lassen -> SearchItems findet automatisch passende amazon.de-Produkte und traegt die gefundenen ASINs hier ein. <AmazonBoxGrid group='...' /> liest group.asins. Voraussetzung: gueltiger Partner-Tag in .secrets/amazon-paapi-historische-schuhe.env. Lauf: npm run amazon",
+  "_comment": "Produktgruppen fuer historische-schuhe.de. keyword + count gesetzt, asins leer -> SearchItems findet passende amazon.de-Produkte und traegt die ASINs hier ein. <AmazonBoxGrid group='...' />. Lauf: npm run amazon",
   "mittelalterschuhe": {
     "title": "Mittelalterschuhe bei Amazon",
     "keyword": "Mittelalter Schuhe Leder",
     "searchIndex": "Shoes",
-    "count": 6,
+    "count": 8,
     "asins": [
+      "B0GJ4QR4LM",
       "B0CH4NYQPR",
+      "B0F3JTZWX1",
       "B0CH4MBFM5",
-      "B0GJ4QR4LM"
+      "B0GJ4PS14X"
     ]
   },
   "lederstiefel": {
     "title": "Mittelalter-Lederstiefel",
     "keyword": "Mittelalter Lederstiefel Herren",
     "searchIndex": "Shoes",
-    "count": 6,
+    "count": 8,
     "asins": [
-      "B0FNQRS54Q",
       "B0CH4MBFM5",
+      "B0FHDK4RDS",
       "B0CH4NYQPR",
-      "B0CH4PB251"
+      "B0FNQRS54Q"
     ]
   },
   "roemische-sandalen": {
     "title": "Roemersandalen & antike Sandalen",
     "keyword": "Roemersandalen Leder Herren",
     "searchIndex": "Shoes",
-    "count": 4,
+    "count": 6,
     "asins": [
       "B0GJ4QBCRY",
       "B07S1TYSNQ",
+      "B004K2PV6C",
+      "B007VE1SPO",
       "B06Y5MVX3K",
       "B0036LRI4Q"
     ]
@@ -39,36 +43,119 @@
     "title": "Bundschuhe & wendegenaehte Schuhe",
     "keyword": "Bundschuhe Mittelalter Leder",
     "searchIndex": "Shoes",
-    "count": 4,
+    "count": 6,
     "asins": [
       "B0F8NPPWS6",
+      "B0GJ4WXQNL",
       "B0F8NP64XW",
-      "B0F8NPCNRH",
-      "B0GJ4QBCRY"
+      "B0GJ4QBCRY",
+      "B0GJ4PS14X",
+      "B0F3JTZ1C7"
     ]
   },
   "larp-stiefel": {
     "title": "LARP- & Reenactment-Stiefel",
     "keyword": "LARP Stiefel Leder",
     "searchIndex": "Shoes",
-    "count": 4,
+    "count": 6,
     "asins": [
-      "B0CH4NHD76",
       "B0CH4NYQPR",
-      "B0CH4MBFM5",
-      "B0F3JTS4C9"
+      "B0FHDK4RDS",
+      "B00SV52Y46",
+      "B0FPD81Y1C",
+      "B0G4MP538X"
     ]
   },
   "schuhpflege": {
     "title": "Lederpflege fuer historische Schuhe",
     "keyword": "Lederfett Schuhpflege Leder",
     "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B007DJ566O",
+      "B091CZMZRX",
+      "B08B667HPT",
+      "B019QWS4IM",
+      "B079X567M2",
+      "B08VX3BYYG"
+    ]
+  },
+  "barockschuhe": {
+    "title": "Barock- & Rokoko-Schuhe",
+    "keyword": "Barock Schuhe Kostuem Damen",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0CX7ZWQNP",
+      "B0FSC6C4L5",
+      "B00LCT599U",
+      "B0CHQJCYMG",
+      "B0F143XK2J",
+      "B00HBUXIR4"
+    ]
+  },
+  "viktorianische-stiefel": {
+    "title": "Viktorianische Stiefeletten",
+    "keyword": "Viktorianische Stiefeletten Schnuerstiefel",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0F9Y3RFHN",
+      "B0D8KQCQRJ",
+      "B0GY4FW26S",
+      "B0DPZY5JJ7",
+      "B0DWMKNFG3",
+      "B0FL6PXQHX"
+    ]
+  },
+  "geta": {
+    "title": "Japanische Geta & Holzsandalen",
+    "keyword": "Geta Japanische Holzsandale",
+    "searchIndex": "Shoes",
     "count": 4,
     "asins": [
-      "B08B667HPT",
-      "B091CZMZRX",
-      "B007DJ566O",
-      "B079X567M2"
+      "B0FVG5H5XN",
+      "B0F4D9H52Z",
+      "B0FVG671JW",
+      "B0F4D82DG7"
+    ]
+  },
+  "mojari": {
+    "title": "Indische Jutti & Mojari",
+    "keyword": "Jutti Schuhe Indische Mojari",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B08KTGJ7M2",
+      "B0BTLYBBRN",
+      "B0BT69JTW1",
+      "B08CHG38MW"
+    ]
+  },
+  "vintage-schuhe": {
+    "title": "Vintage- & Retro-Schuhe",
+    "keyword": "Vintage Schuhe Retro Leder",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0F43S68GZ",
+      "B0D8B9XDZ9",
+      "B0H1HD984T",
+      "B0D89MLZSX",
+      "B0D89QLX7S",
+      "B0FC2TWRVL"
+    ]
+  },
+  "orient-slipper": {
+    "title": "Orientalische Lederpantoffeln",
+    "keyword": "Orientalische Lederpantoffel Babouche",
+    "searchIndex": "Shoes",
+    "count": 4,
+    "asins": [
+      "B0F6VLW8L3",
+      "B0F2FQMP82",
+      "B0DJPPG6LR",
+      "B08R9B9GS7"
     ]
   }
 }

@@ -2,14 +2,16 @@
 import { getCollection } from 'astro:content';
 import type { SiloKey } from '../data/silos.ts';
 import { getImage } from '../lib/images.ts';
+import AmazonBoxGrid from './AmazonBoxGrid.astro';
 
 interface Props {
   silo: SiloKey;
   eyebrow: string;
   title: string;
   intro: string;
+  amazonGroup?: string;
 }
-const { silo, eyebrow, title, intro } = Astro.props;
+const { silo, eyebrow, title, intro, amazonGroup } = Astro.props;
 const artikel = (await getCollection('artikel'))
   .filter((a) => a.data.silo === silo)
   .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
@@ -44,6 +46,11 @@ const artikel = (await getCollection('artikel'))
           </a>
           );
         })}
+      </div>
+    )}
+    {amazonGroup && (
+      <div style="margin-top:40px">
+        <AmazonBoxGrid group={amazonGroup} />
       </div>
     )}
   </div>

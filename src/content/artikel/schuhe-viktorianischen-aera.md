@@ -9,6 +9,7 @@ icon: "👢"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "viktorianische-stiefel"
 ---
 
 Kaum eine Epoche hat dem Schuh so viel gesellschaftliche Bedeutung zugeschrieben wie das viktorianische England. Wer im 19. Jahrhundert etwas auf sich hielt, zeigte das nicht zuletzt am Fuß, in fein geschnürten oder geknöpften Stiefeletten, die den Knöchel umschlossen und Disziplin wie Wohlstand zugleich signalisierten.

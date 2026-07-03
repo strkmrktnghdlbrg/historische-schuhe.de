@@ -9,6 +9,7 @@ icon: "👟"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "vintage-schuhe"
 ---
 
 Kaum ein Jahrzehnt hat den Schuh so laut gefeiert wie die 1980er. Was zuvor Sportgerät war, wurde nun zum Statussymbol, zum Statement und zum Teil einer ganzen Jugendkultur. Zwischen Aerobic-Studio, Musikvideo und Großraumbüro entstand eine Schuhmode, die kräftige Farben, klare Marken und ein neues Selbstbewusstsein zusammenbrachte.

@@ -9,6 +9,7 @@ icon: "🪖"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "lederstiefel"
 ---
 
 Wer an die Napoleonischen Kriege denkt, hat oft die großen Schlachten und prächtigen Uniformen vor Augen. Tatsächlich aber wurde der Krieg um 1800 zu einem erheblichen Teil mit den Füßen geführt. Die enormen Truppenbewegungen quer durch Europa stellten an das Schuhwerk der Soldaten Anforderungen, die das einfache Lederhandwerk jener Zeit kaum erfüllen konnte.

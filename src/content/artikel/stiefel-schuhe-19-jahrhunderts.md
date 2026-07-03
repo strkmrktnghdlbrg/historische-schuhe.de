@@ -9,6 +9,7 @@ icon: "🥾"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "viktorianische-stiefel"
 ---
 
 Kaum ein Schuhtyp hat das 19. Jahrhundert so geprägt wie der Stiefel. Er war Arbeitsgerät und Statussymbol zugleich, reichte vom robusten Reitstiefel des Offiziers bis zur fein geknöpften Damenstiefelette der viktorianischen Salons. In diesem Ratgeber ordnen wir die wichtigsten Formen ein und schauen, wie Material, Technik und Mode den Stiefel über das Jahrhundert hinweg veränderten.

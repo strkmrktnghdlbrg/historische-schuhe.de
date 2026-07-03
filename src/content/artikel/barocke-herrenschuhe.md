@@ -9,6 +9,7 @@ icon: "🥿"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "barockschuhe"
 ---
 
 Wer heute an hohe Absätze denkt, denkt selten an Männer. Im Barock war das anders: Der Herrenschuh stand am Hof ganz oben auf der Bühne der Selbstdarstellung, und ein gut gesetzter Absatz war eine politische Geste so gut wie ein modisches Detail. Wir schauen uns an, wie der Mann des 17. und frühen 18. Jahrhunderts auftrat, vom roten Hacken bis zum mächtigen [Stulpenstiefel](/napoleonische-marschstiefel-schuhe/).

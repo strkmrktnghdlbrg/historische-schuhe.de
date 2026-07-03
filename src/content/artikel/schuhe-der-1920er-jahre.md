@@ -9,6 +9,7 @@ icon: "👠"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 7
+amazonGroup: "vintage-schuhe"
 ---
 
 Kaum ein Jahrzehnt hat die Schuhmode so sichtbar verändert wie die 1920er Jahre. Plötzlich rückte ein Körperteil ins Blickfeld, das jahrhundertelang unter langen Säumen verborgen lag: der Fuß. Mit kürzeren Röcken, neuen Tänzen und dem geometrischen Formenspiel des Art déco wurde der Schuh vom funktionalen Accessoire zum stilbildenden Statement.

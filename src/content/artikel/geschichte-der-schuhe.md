@@ -7,6 +7,7 @@ category: "Geschichte"
 icon: "📜"
 pubDate: 2026-05-30
 readMin: 12
+amazonGroup: "mittelalterschuhe"
 ---
 
 Schuhe erzählen Geschichte. Wer versteht, wie sich Form und Machart über die Jahrhunderte verändert haben, trifft beim [Kauf](/beste-shops-apps-historische-schuhe-kaufen/) eine stimmigere Wahl. Dieser Überblick ordnet die wichtigsten Epochen ein.

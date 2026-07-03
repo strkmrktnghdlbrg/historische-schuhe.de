@@ -9,6 +9,7 @@ icon: "👑"
 pubDate: 2024-08-19
 updated: 2026-06-14
 readMin: 8
+amazonGroup: "barockschuhe"
 ---
 
 Kaum eine Epoche hat das Aussehen unserer Füße so radikal umgekrempelt wie die Renaissance. Wo eben noch lange, spitze Schnäbel den Ton angaben, kamen plötzlich breite, fast quadratische Formen in Mode. In diesem Beitrag schauen wir uns an, warum die Renaissance den Schuh neu erfand und wie aus einem Gebrauchsgegenstand ein Statussymbol wurde.
