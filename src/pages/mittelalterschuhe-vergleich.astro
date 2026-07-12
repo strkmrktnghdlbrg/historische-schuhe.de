@@ -2,18 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AmazonBoxGrid from '../components/AmazonBoxGrid.astro';
 
-// Redaktionelle Einordnung (Platzhalter-Scores). Darunter echte Amazon-Produkte via PA-API.
+// Redaktionelle Typ-Einordnung (kein Ranking, keine Messwerte). Echte Modelle stehen darunter im Amazon-Grid.
 const produkte = [
-  { cat: 'Wendegenäht · Markt', name: 'Klassischer Bundschuh', emoji: '👞', score: '4,3', stars: '★★★★☆', top: false, price: 'ca. 49 €',
-    best: 'Beste authentische Optik fürs kleine Budget',
+  { cat: 'Wendegenäht · Markt', name: 'Bundschuh', emoji: '👞', highlight: 'Authentischste Optik',
+    best: 'Passt, wenn dir historische Glaubwürdigkeit am wichtigsten ist',
     pros: ['Sehr authentische, historisch glaubwürdige Optik', 'Weiches, atmungsaktives Echtleder', 'Leicht und bequem auf weichem Boden'],
     cons: ['Dünne Sohle, wenig Dämpfung auf Asphalt'] },
-  { cat: 'Vielseitig · LARP & Markt', name: 'Geschnürter Lederstiefel', emoji: '🥾', score: '4,7', stars: '★★★★★', top: true, price: 'ca. 89 €',
-    best: 'Bester Allrounder für mehrere Epochen',
+  { cat: 'Vielseitig · LARP & Markt', name: 'Geschnürter Lederstiefel', emoji: '🥾', highlight: 'Vielseitigster Allrounder', top: true,
+    best: 'Passt, wenn ein Paar zu mehreren Epochen und langen Tagen taugen soll',
     pros: ['Robust mit guter Standfestigkeit', 'Passt optisch zu vielen Epochen', 'Hält auch lange Markttage durch'],
     cons: ['Braucht etwas Einlaufzeit'] },
-  { cat: 'Antike · Sommer', name: 'Römische Sandale', emoji: '🩴', score: '4,1', stars: '★★★★☆', top: false, price: 'ca. 35 €',
-    best: 'Bester Einstieg für warme Veranstaltungen',
+  { cat: 'Antike · Sommer', name: 'Römische Sandale', emoji: '🩴', highlight: 'Bester Sommer-Einstieg',
+    best: 'Passt, wenn es leicht, luftig und günstig für warme Tage sein soll',
     pros: ['Leicht und luftig, ideal bei Hitze', 'Günstiger Preiseinstieg', 'Schnell an- und ausgezogen'],
     cons: ['Nur für warmes Wetter geeignet', 'Wenig Schutz auf rauem Untergrund'] },
 ];
@@ -28,7 +28,7 @@ const produkte = [
       <span class="eyebrow">Vergleich des Monats</span>
       <h1 style="font-size:48px;margin:12px 0 16px;line-height:1.05">Mittelalterschuhe im Vergleich</h1>
       <p style="font-size:19px;color:#5a4634;line-height:1.6">Welcher historische Schuh passt zu deinem Anlass? Wir stellen drei beliebte Modelle für Markt, LARP und Reenactment gegenüber, sortiert nach Authentizität, Verarbeitung und Alltagstauglichkeit. Preise und Verfügbarkeit ändern sich, prüfe sie immer direkt beim Händler.</p>
-      <div class="aff-banner">Anzeige: Diese Seite enthält Affiliate-Links. Kaufst du über einen markierten Link, erhalten wir ggf. eine kleine Provision. Für dich bleibt der Preis gleich. Die Bewertungen sind eine redaktionelle Einschätzung, keine Labormessung.</div>
+      <div class="aff-banner">Anzeige: Diese Seite enthält Affiliate-Links. Kaufst du über einen markierten Link, erhalten wir ggf. eine kleine Provision. Für dich bleibt der Preis gleich. Die Einordnung nach Schuhtyp ist eine redaktionelle Empfehlung, kein Test und kein Ranking.</div>
     </div>
   </section>
 
@@ -37,19 +37,18 @@ const produkte = [
       <div class="vgrid">
         {produkte.map((p) => (
           <article class={`pcard${p.top ? ' top' : ''}`}>
-            {p.top && <span class="ribbon">★ Top-Empfehlung</span>}
+            {p.top && <span class="ribbon">★ Vielseitigste Wahl</span>}
             <div class="pthumb">{p.emoji}</div>
             <div class="pbody">
               <span class="pcat">{p.cat}</span>
               <h3>{p.name}</h3>
-              <div class="prate"><span class="stars">{p.stars}</span><span class="score">{p.score}</span></div>
-              <p style="font-size:13.5px;color:#6a5440;font-style:italic;margin-bottom:12px">{p.best}</p>
+              <span class="phighlight">{p.highlight}</span>
+              <p style="font-size:13.5px;color:#6a5440;font-style:italic;margin:10px 0 12px">{p.best}</p>
               <ul class="pros">
                 {p.pros.map((t) => <li class="pro">{t}</li>)}
                 {p.cons.map((t) => <li class="con">{t}</li>)}
               </ul>
-              <a href="#" class="btn btn-primary" rel="sponsored nofollow">Beim Händler ansehen →</a>
-              <p class="pprice">ab {p.price} · Preis prüfen</p>
+              <a href="#amazon-modelle" class="btn btn-primary">Passende Modelle ansehen →</a>
             </div>
           </article>
         ))}
@@ -58,7 +57,7 @@ const produkte = [
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section id="amazon-modelle" style="padding-top:0;scroll-margin-top:90px">
     <div class="wrap" style="max-width:1100px">
       <AmazonBoxGrid group="mittelalterschuhe" heading="Beliebte Mittelalterschuhe bei Amazon" intro="Aktuelle Modelle und Preise direkt von Amazon, automatisch aktualisiert." />
     </div>
@@ -81,6 +80,7 @@ const produkte = [
 
 <style>
   .aff-banner{margin-top:22px;background:rgba(176,138,62,.12);border:1px solid var(--line);border-radius:10px;padding:13px 16px;font-size:13px;color:#6a5440}
+  .phighlight{display:inline-block;background:rgba(176,138,62,.14);color:#7a5c22;font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px}
   .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
   @media(max-width:900px){.vgrid{grid-template-columns:1fr}}
 </style>

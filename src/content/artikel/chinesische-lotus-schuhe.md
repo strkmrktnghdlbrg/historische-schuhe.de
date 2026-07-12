@@ -27,6 +27,10 @@ Wichtig ist die klare Einordnung: Es handelte sich um eine schmerzhafte und gesu
 
 Trotz ihres problematischen Hintergrunds zeigen die Schuhe ein [hohes handwerkliches Können](/wendegenaehte-schuhe-erklaert/). Feine Stickereien mit Blumen, Vögeln oder Glückssymbolen schmückten die winzigen Seidenschuhe. Sie wurden oft von den Trägerinnen selbst angefertigt und waren Teil der Aussteuer.
 
+## Regionale und soziale Unterschiede
+
+Das Füßebinden war nie überall in China gleich verbreitet. Es war vor allem in bestimmten Regionen und sozialen Schichten üblich, während andere Bevölkerungsgruppen es kaum praktizierten. In manchen Gegenden band man die Füße weniger streng, sodass die Frauen arbeitsfähig blieben, in anderen führte die extreme Bindung zu schwerer Bewegungseinschränkung. Auch Form, Farbe und Stickerei der Lotusschuhe variierten je nach Region und Anlass. Rote Schuhe etwa gehörten oft zur Hochzeit, während schlichtere Modelle den Alltag begleiteten. Diese Vielfalt zeigt, dass es nicht die eine Lotusschuh-Tradition gab, sondern viele lokale Ausprägungen eines gesamtgesellschaftlichen Ideals.
+
 ## Einordnung
 
 Lotusschuhe stehen exemplarisch dafür, wie eng Schuhe mit gesellschaftlichen Normen, Macht und Körperbildern verflochten sein können. Andere kulturelle Schuhtraditionen findest du bei den [japanischen Geta](/japanische-geta-schuhe/) und den [indischen Mojaris](/indische-mojaris/). Den großen Bogen spannt die [Geschichte der Schuhe](/geschichte-der-schuhe/).

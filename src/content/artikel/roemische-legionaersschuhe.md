@@ -26,6 +26,10 @@ Das eigentliche Geheimnis lag unter dem Fuß. Die Sohle bestand aus mehreren ver
 
 Caligae wurden in vielen Größen gefertigt und über das Heer verteilt. Im kälteren Norden des Reiches trugen Soldaten dazu Socken oder Fußwickel. Mit der Zeit, vor allem ab der Spätantike, setzten sich geschlossenere Schuhformen durch, und die klassische Caliga verschwand allmählich aus dem Militäralltag.
 
+## Was Caligae über das römische Heer verraten
+
+Die Caliga war ein Massenprodukt in einem erstaunlich modernen Sinn. Damit ganze Legionen ausgerüstet werden konnten, brauchte es standardisierte Größen, verlässlichen Nachschub an Leder und Eisennägeln sowie Werkstätten, die in großer Zahl produzierten. Die genagelte Sohle nutzte sich auf langen Märschen ab, weshalb Ersatznägel zum regelmäßigen Bedarf gehörten, ähnlich wie Verpflegung oder Ausrüstung. An Fundorten ehemaliger Lager finden Archäologen bis heute große Mengen dieser Schuhnägel, was Rückschlüsse auf Truppenstärke und Aufenthaltsdauer erlaubt. Der einfache Soldatenschuh ist damit eine wertvolle Quelle für die Logistik und Reichweite des römischen Heeres.
+
 ## Caligae im Reenactment heute
 
 Für Darstellerinnen und Darsteller der römischen Antike sind Caligae ein Kernstück der Ausrüstung. Beim Nachkauf zählt:

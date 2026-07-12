@@ -30,6 +30,10 @@ Eine Besonderheit ägyptischer Machtsymbolik: Auf den Sohlen mancher königliche
 
 Weil das trockene Wüstenklima Leder und Pflanzenfasern gut konserviert, sind aus Ägypten ungewöhnlich viele Schuhfunde erhalten. Sie zeigen Machart, Materialwahl und Tragespuren und machen die ägyptische Sandale zu einer der am besten dokumentierten Schuhformen der Antike.
 
+## Wer die Sandalen machte
+
+Sandalenmacher waren im alten Ägypten ein eigenes Handwerk. Sie arbeiteten Leder und Pflanzenfasern zu leichten, an das Klima angepassten Sohlen und banden sie mit Riemen zwischen den Zehen. Für die königlichen Werkstätten galten höhere Ansprüche: Hier entstanden verzierte Stücke aus feinem Leder, teils mit Gold- und Perlenschmuck, die weniger für den Alltag als für Repräsentation und Rituale gedacht waren. Darstellungen auf Wandmalereien und Reliefs zeigen sogar einen eigenen Hofbeamten, den Sandalenträger, der die Fußbekleidung des Herrschers verwahrte. Der Schuh war damit nicht nur Kleidung, sondern Teil des höfischen Zeremoniells.
+
 ## Einordnung für Sammler und Darsteller
 
 Für eine ägyptische Darstellung steht die Sandale im Mittelpunkt, schlicht für das einfache Volk, verziert für die Elite. Verwandte antike Schuhwelten findest du bei den [antiken Sandalen](/antike-sandalen-schuhe/) und den [Schuhen des antiken Griechenlands](/schuhe-des-antiken-griechenlands/). Eine Gesamtschau bietet die [Geschichte der Schuhe](/geschichte-der-schuhe/).

@@ -28,6 +28,10 @@ Eine Geta besteht aus einer flachen Holzplattform, die auf zwei quer stehenden H
 
 Traditionell gehören Geta zu Kimono und Yukata, etwa bei Festen, im Sommer oder in heißen Quellenorten. Sie sind praktisch, weil sie sich leicht an- und ausziehen lassen, was in einer Kultur mit Schuhwechsel an der Türschwelle wichtig ist. Auch Handwerker und bestimmte Berufe nutzten erhöhte Geta-Formen für besondere Zwecke.
 
+## Warum ausgerechnet Holz und erhöhte Zähne?
+
+Die ungewöhnliche Bauweise hat einen praktischen Kern. Japan ist ein Land mit feuchten Sommern, Reisfeldern und viel Regen. Die erhöhten Zähne halten Fuß und Kleidungssaum sauber, wenn der Boden nass oder schlammig ist. Holz war verfügbar, langlebig und ließ sich leicht ersetzen, denn nutzen sich die Zähne ab, kann man sie nachschleifen oder austauschen. Handwerker in besonders nassen Berufen trugen extra hohe Geta, um trocken zu bleiben. So verbindet die Geta Funktion und Ästhetik: Der erhöhte Stand ist zugleich praktisch und prägt den charakteristischen, leicht wiegenden Gang.
+
 ## Tragegefühl und Eingewöhnung
 
 Die erhöhte Plattform und der Zehensteg fühlen sich für Ungeübte zunächst ungewohnt an. Mit etwas Übung wird der typische, leicht wiegende Gang vertraut. Wer Geta zu einer Darstellung oder zum Yukata trägt, plant am besten etwas [Eingewöhnung](/schuhgroesse-passform-historische-schuhe/) ein.

@@ -26,6 +26,10 @@ Das prägende Merkmal mittelalterlicher Schuhe ist die Wendenaht. Der Schuh wurd
 
 **Spätmittelalter (etwa 1250 bis 1500):** Jetzt wird Mode sichtbar. Die Schnabelschuhe, lang gezogene Spitzen, werden zum Statussymbol. Gegen Nässe und Schmutz trug man hölzerne Trippen als Überschuh.
 
+## Material, Farbe und Herstellung
+
+Mittelalterliche Schuhe waren fast ausnahmslos aus pflanzlich gegerbtem Leder, meist von Rind, Ziege oder Schaf. Die Farben blieben natürlich, von hellem Beige über Braun bis zu dunklem, fast schwarzem Leder, denn kräftige Färbungen waren aufwendig und teuer. Gefertigt wurden die Schuhe vom Schuster in Handarbeit, in Städten oft in einer eigenen Zunft organisiert. Reparatur war die Regel, nicht die Ausnahme: Durchgelaufene Sohlen wurden erneuert, das kostbare Oberleder so lange wie möglich weiterverwendet. Für eine glaubwürdige Darstellung lohnt es sich deshalb, auf naturfarbenes Echtleder und schlichte, ungefärbte Optik zu setzen, statt auf grelle Farben oder auffällige Beschläge.
+
 ## Welche Schuhe passen zu welcher Darstellung?
 
 - **Frühmittelalter / Wikinger:** schlichter Wendeschuh mit Schnürung.

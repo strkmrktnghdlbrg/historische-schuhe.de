@@ -22,6 +22,10 @@ Stiefel gehörten im Mittelalter zur robusten, praktischen Seite der [Schuhmode]
 
 Wie bei Schuhen war die wendegenähte Bauweise verbreitet, mehr dazu im Beitrag zu [wendegenähten Schuhen](/wendegenaehte-schuhe-erklaert/).
 
+## Warum der Schaft den Unterschied macht
+
+Der offensichtlichste Unterschied zum niedrigen Schuh ist der Schaft, und er ist mehr als Optik. Ein höherer Schaft schützt Knöchel und Wade vor Gestrüpp, Steigbügeln und Nässe von unten. Genau deshalb waren Stiefel im Mittelalter typisch für Menschen, die reisten, ritten oder im Freien arbeiteten, während im Dorf und in der Stadt der niedrige Bundschuh dominierte. Für deine Darstellung heißt das: Ein Stiefel signalisiert Bewegung, Reise und oft einen gehobeneren oder militärischen Stand. Wer eine einfache, sesshafte Rolle darstellt, ist mit einem [schlichten Schuh](/schuhe-im-mittelalter/) meist stimmiger unterwegs.
+
 ## Für welche Darstellung passt welcher Stiefel?
 
 - **Einfaches Volk, Reisende:** schlichter halbhoher Schnürstiefel aus naturfarbenem Leder.
