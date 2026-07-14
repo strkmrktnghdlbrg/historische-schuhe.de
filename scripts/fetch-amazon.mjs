@@ -1,34 +1,40 @@
 #!/usr/bin/env node
 /**
- * fetch-amazon.mjs — Amazon PA-API 5.0 fuer historische-schuhe.de
+ * fetch-amazon.mjs — holt Produktdaten von der Amazon Creators API fuer historische-schuhe.de
+ *
+ * Ersetzt die abgeschaltete PA-API 5.0 (SigV4). Neue Auth: OAuth2 client-credentials.
  *
  * Pro Gruppe in src/data/amazon-asins.json:
- *   - feste "asins": []  -> GetItems holt genau diese ASINs
- *   - "keyword" gesetzt, asins leer -> SearchItems findet passende Produkte,
+ *   - feste "asins": []  -> getItems holt genau diese ASINs
+ *   - "keyword" gesetzt, asins leer -> searchItems findet passende Produkte,
  *     die gefundenen ASINs werden in amazon-asins.json zurueckgeschrieben
  *
  * Output: src/data/amazon-products.json (keyed by ASIN).
  *
- * Credentials (Reihenfolge): process.env, dann
- *   /Users/joshuastark/Documents/Claude Code/.secrets/amazon-paapi-historische-schuhe.env
- * Variablen: AMAZON_PAAPI_ACCESS_KEY, AMAZON_PAAPI_SECRET_KEY, AMAZON_PARTNER_TAG,
- *   AMAZON_HOST (default webservices.amazon.de), AMAZON_REGION (default eu-west-1),
- *   AMAZON_MARKETPLACE (default www.amazon.de)
+ * Credentials (in dieser Reihenfolge):
+ *   1. process.env  (z.B. GitHub Actions Secrets)
+ *   2. Projekt-Tag/Marktplatz: .secrets/amazon-paapi-historische-schuhe.env
+ *   3. Shared Creators-Creds:  .secrets/amazon-creators-api.env
+ *
+ * Erwartete Variablen:
+ *   CREATORS_CREDENTIAL_ID, CREATORS_CREDENTIAL_SECRET   (OAuth2-App, shared)
+ *   AMAZON_PARTNER_TAG                                    (projekt-spezifisch)
+ *   CREATORS_MARKETPLACE / AMAZON_MARKETPLACE (default www.amazon.de)
  *
  * Nutzung:  npm run amazon
  */
-import crypto from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const SECRETS_FILE = '/Users/joshuastark/Documents/Claude Code/.secrets/amazon-paapi-historische-schuhe.env';
+const CREATORS_FILE = '/Users/joshuastark/Documents/Claude Code/.secrets/amazon-creators-api.env';
+const PROJECT_FILE = '/Users/joshuastark/Documents/Claude Code/.secrets/amazon-paapi-historische-schuhe.env';
 const ASINS_PATH = resolve(ROOT, 'src/data/amazon-asins.json');
 const OUT_PATH = resolve(ROOT, 'src/data/amazon-products.json');
 
-/* --- 1. Env laden --- */
+/* --- 1. Env laden (Projekt-Tag + shared Creators-Creds) --- */
 function loadEnvFile(path) {
   if (!existsSync(path)) return {};
   const out = {};
@@ -41,19 +47,20 @@ function loadEnvFile(path) {
   }
   return out;
 }
-const fileEnv = loadEnvFile(SECRETS_FILE);
+const fileEnv = { ...loadEnvFile(PROJECT_FILE), ...loadEnvFile(CREATORS_FILE) };
 const env = (k, d) => process.env[k] || fileEnv[k] || d;
 
-const ACCESS = env('AMAZON_PAAPI_ACCESS_KEY');
-const SECRET = env('AMAZON_PAAPI_SECRET_KEY');
+const CLIENT_ID = env('CREATORS_CREDENTIAL_ID');
+const CLIENT_SECRET = env('CREATORS_CREDENTIAL_SECRET');
 const TAG = env('AMAZON_PARTNER_TAG');
-const HOST = env('AMAZON_HOST', 'webservices.amazon.de');
-const REGION = env('AMAZON_REGION', 'eu-west-1');
-const MARKETPLACE = env('AMAZON_MARKETPLACE', 'www.amazon.de');
-const SERVICE = 'ProductAdvertisingAPI';
+const MARKETPLACE = env('CREATORS_MARKETPLACE') || env('AMAZON_MARKETPLACE', 'www.amazon.de');
+const TOKEN_URL = 'https://api.amazon.com/auth/o2/token';
+const GETITEMS_URL = 'https://creatorsapi.amazon/catalog/v1/getItems';
+const SEARCHITEMS_URL = 'https://creatorsapi.amazon/catalog/v1/searchItems';
 
-if (!ACCESS || !SECRET || !TAG) {
-  console.error('FEHLER: Credentials fehlen (ACCESS/SECRET/TAG). .secrets/amazon-paapi-historische-schuhe.env pruefen.');
+if (!CLIENT_ID || !CLIENT_SECRET || !TAG) {
+  console.error('FEHLER: Credentials fehlen (CREATORS_CREDENTIAL_ID/SECRET oder AMAZON_PARTNER_TAG).');
+  console.error('.secrets/amazon-creators-api.env und .secrets/amazon-paapi-historische-schuhe.env pruefen.');
   process.exit(1);
 }
 if (TAG.startsWith('PENDING')) {
@@ -62,96 +69,104 @@ if (TAG.startsWith('PENDING')) {
   process.exit(1);
 }
 
+/* --- Nur GUELTIGE camelCase-Resources (andere => HTTP 400) --- */
 const RESOURCES = [
-  'Images.Primary.Large',
-  'ItemInfo.Title',
-  'ItemInfo.ByLineInfo',
-  'ItemInfo.Features',
-  'Offers.Listings.Price',
-  'Offers.Listings.DeliveryInfo.IsPrimeEligible',
-  'Offers.Listings.MerchantInfo',
+  'images.primary.large',
+  'itemInfo.title',
+  'itemInfo.byLineInfo',
+  'itemInfo.features',
+  'offersV2.listings.price',
+  'offersV2.listings.availability',
 ];
-
-/* --- 2. SigV4-Signierung (generisch fuer GetItems/SearchItems) --- */
-const sha256 = (s) => crypto.createHash('sha256').update(s, 'utf8').digest('hex');
-const hmac = (key, s) => crypto.createHmac('sha256', key).update(s, 'utf8').digest();
-
-function signedHeaders(path, target, payload) {
-  const amzDate = new Date().toISOString().replace(/[:-]|\.\d{3}/g, ''); // YYYYMMDDTHHMMSSZ
-  const dateStamp = amzDate.slice(0, 8);
-  const signedList = 'content-encoding;host;x-amz-date;x-amz-target';
-  const canonicalHeaders =
-    `content-encoding:amz-1.0\n` +
-    `host:${HOST}\n` +
-    `x-amz-date:${amzDate}\n` +
-    `x-amz-target:${target}\n`;
-  const canonicalRequest = ['POST', path, '', canonicalHeaders, signedList, sha256(payload)].join('\n');
-  const scope = `${dateStamp}/${REGION}/${SERVICE}/aws4_request`;
-  const stringToSign = ['AWS4-HMAC-SHA256', amzDate, scope, sha256(canonicalRequest)].join('\n');
-  const kDate = hmac('AWS4' + SECRET, dateStamp);
-  const kRegion = hmac(kDate, REGION);
-  const kService = hmac(kRegion, SERVICE);
-  const kSigning = hmac(kService, 'aws4_request');
-  const signature = crypto.createHmac('sha256', kSigning).update(stringToSign, 'utf8').digest('hex');
-  return {
-    'content-encoding': 'amz-1.0',
-    'content-type': 'application/json; charset=utf-8',
-    'host': HOST,
-    'x-amz-date': amzDate,
-    'x-amz-target': target,
-    'Authorization': `AWS4-HMAC-SHA256 Credential=${ACCESS}/${scope}, SignedHeaders=${signedList}, Signature=${signature}`,
-  };
-}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function call(path, target, body, attempt = 0) {
-  const payload = JSON.stringify(body);
-  const res = await fetch(`https://${HOST}${path}`, {
+/* --- 2. OAuth2 Token holen (client_credentials, gilt 1h) --- */
+async function getToken() {
+  const body = new URLSearchParams({
+    grant_type: 'client_credentials',
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
+    scope: 'creatorsapi::default',
+  });
+  const res = await fetch(TOKEN_URL, {
     method: 'POST',
-    headers: signedHeaders(path, target, payload),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  const text = await res.text();
+  if (!res.ok) { console.error(`Token-Fehler ${res.status}: ${text.slice(0, 300)}`); process.exit(1); }
+  return JSON.parse(text).access_token;
+}
+
+/* --- 3. getItems / searchItems (Creators, lowerCamelCase) --- */
+async function getItems(token, asins) {
+  const payload = JSON.stringify({
+    itemIds: asins.slice(0, 10),
+    itemIdType: 'ASIN',
+    marketplace: MARKETPLACE,
+    partnerTag: TAG,
+    partnerType: 'Associates',
+    resources: RESOURCES,
+  });
+  const res = await fetch(GETITEMS_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json',
+      'x-marketplace': MARKETPLACE,
+    },
     body: payload,
   });
   const text = await res.text();
-  if (!res.ok) {
-    // 429 Throttling: bis zu 2x mit Backoff wiederholen
-    if (res.status === 429 && attempt < 2) {
-      await sleep(4000 * (attempt + 1));
-      return call(path, target, body, attempt + 1);
-    }
-    return { ok: false, status: res.status, body: text };
-  }
-  return { ok: true, data: JSON.parse(text) };
+  if (!res.ok) return { ok: false, status: res.status, body: text };
+  return { ok: true, items: JSON.parse(text)?.itemsResult?.items || [] };
 }
 
-const getItems = (asins) => call('/paapi5/getitems',
-  'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems',
-  { ItemIds: asins, ItemIdType: 'ASIN', Marketplace: MARKETPLACE, PartnerTag: TAG, PartnerType: 'Associates', Resources: RESOURCES });
-
-const searchItems = (keyword, searchIndex, count) => call('/paapi5/searchitems',
-  'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems',
-  { Keywords: keyword, SearchIndex: searchIndex || 'All', ItemCount: Math.min(count || 6, 10), Marketplace: MARKETPLACE, PartnerTag: TAG, PartnerType: 'Associates', Resources: RESOURCES });
+async function searchItems(token, keyword, searchIndex, count) {
+  const payload = JSON.stringify({
+    keywords: keyword,
+    searchIndex: searchIndex || 'All',
+    itemCount: Math.min(count || 6, 10),
+    marketplace: MARKETPLACE,
+    partnerTag: TAG,
+    partnerType: 'Associates',
+    resources: RESOURCES,
+  });
+  const res = await fetch(SEARCHITEMS_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json',
+      'x-marketplace': MARKETPLACE,
+    },
+    body: payload,
+  });
+  const text = await res.text();
+  if (!res.ok) return { ok: false, status: res.status, body: text };
+  return { ok: true, items: JSON.parse(text)?.searchResult?.items || [] };
+}
 
 function normalize(item) {
-  const listing = item.Offers?.Listings?.[0];
+  const listing = item.offersV2?.listings?.[0];
   return {
-    asin: item.ASIN,
-    title: item.ItemInfo?.Title?.DisplayValue || '',
-    brand: item.ItemInfo?.ByLineInfo?.Brand?.DisplayValue
-        || item.ItemInfo?.ByLineInfo?.Manufacturer?.DisplayValue || '',
-    features: item.ItemInfo?.Features?.DisplayValues?.slice(0, 3) || [],
-    image: item.Images?.Primary?.Large?.URL || '',
-    price: listing?.Price?.DisplayAmount || '',
-    priceAmount: listing?.Price?.Amount ?? null,
-    isPrime: !!listing?.DeliveryInfo?.IsPrimeEligible,
-    url: item.DetailPageURL || '', // enthaelt bereits den Partner-Tag
+    asin: item.asin,
+    title: item.itemInfo?.title?.displayValue || '',
+    brand: item.itemInfo?.byLineInfo?.brand?.displayValue
+        || item.itemInfo?.byLineInfo?.manufacturer?.displayValue || '',
+    features: item.itemInfo?.features?.displayValues?.slice(0, 3) || [],
+    image: item.images?.primary?.large?.url || '',
+    price: listing?.price?.money?.displayAmount || '',
+    priceAmount: listing?.price?.money?.amount ?? null,
+    isPrime: !!listing?.deliveryInfo?.isPrimeEligible,
+    url: item.detailPageURL || '', // enthaelt bereits den Partner-Tag
     fetchedAt: new Date().toISOString().slice(0, 10),
   };
 }
 
-/* --- 3. Pro Gruppe abrufen --- */
+/* --- 4. Pro Gruppe abrufen --- */
 const asinData = JSON.parse(readFileSync(ASINS_PATH, 'utf8'));
-// Bestehende Produkte laden und mergen, damit ein transienter 429 keine Gruppe loescht
+// Bestehende Produkte laden und mergen, damit ein transienter Fehler keine Gruppe loescht
 let products = {};
 if (existsSync(OUT_PATH)) {
   try { products = JSON.parse(readFileSync(OUT_PATH, 'utf8')) || {}; } catch { products = {}; }
@@ -159,24 +174,25 @@ if (existsSync(OUT_PATH)) {
 let total = 0;
 const groups = Object.entries(asinData).filter(([k]) => !k.startsWith('_'));
 
-console.log(`Amazon PA-API: Tag=${TAG}, Marktplatz=${MARKETPLACE}, ${groups.length} Gruppen`);
+console.log(`Amazon Creators API: Tag=${TAG}, Marktplatz=${MARKETPLACE}, ${groups.length} Gruppen`);
+const token = await getToken();
 
 for (const [key, g] of groups) {
   let items = [];
   if (g.asins && g.asins.length > 0) {
-    const r = await getItems(g.asins.slice(0, 10));
-    if (!r.ok) { console.warn(`  ! ${key} GetItems ${r.status}: ${r.body.slice(0, 200)}`); }
-    else items = r.data?.ItemsResult?.Items || [];
+    const r = await getItems(token, g.asins);
+    if (!r.ok) { console.warn(`  ! ${key} getItems ${r.status}: ${r.body.slice(0, 200)}`); }
+    else items = r.items;
   } else if (g.keyword) {
-    const r = await searchItems(g.keyword, g.searchIndex, g.count);
-    if (!r.ok) { console.warn(`  ! ${key} SearchItems ${r.status}: ${r.body.slice(0, 200)}`); }
-    else items = r.data?.SearchResult?.Items || [];
+    const r = await searchItems(token, g.keyword, g.searchIndex, g.count);
+    if (!r.ok) { console.warn(`  ! ${key} searchItems ${r.status}: ${r.body.slice(0, 200)}`); }
+    else items = r.items;
     // gefundene ASINs in die Gruppe zurueckschreiben
-    g.asins = items.map((it) => it.ASIN);
+    g.asins = items.map((it) => it.asin);
   }
-  for (const it of items) { products[it.ASIN] = normalize(it); total++; }
+  for (const it of items) { products[it.asin] = normalize(it); total++; }
   console.log(`  ${key}: ${items.length} Produkte`);
-  await sleep(2000); // Drossel gegen 429
+  await sleep(1500); // Drossel
 }
 
 writeFileSync(OUT_PATH, JSON.stringify(products, null, 2) + '\n', 'utf8');
