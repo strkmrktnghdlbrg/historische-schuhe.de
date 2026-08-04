@@ -1,9 +1,10 @@
 name: Amazon-Produktdaten aktualisieren
 
-# Holt woechentlich frische amazon.de-Produktdaten via PA-API und committet
+# Holt woechentlich frische amazon.de-Produktdaten via Creators API und committet
 # src/data/amazon-products.json + amazon-asins.json zurueck ins Repo.
-# Voraussetzung: Repository-Secrets AMAZON_PAAPI_ACCESS_KEY, AMAZON_PAAPI_SECRET_KEY,
-# AMAZON_PARTNER_TAG (Settings -> Secrets and variables -> Actions).
+# Voraussetzung: Repository-Secrets AMAZON_CREATOR_CLIENT_ID, AMAZON_CREATOR_CLIENT_SECRET,
+# AMAZON_CREATOR_PARTNER_TAG (Settings -> Secrets and variables -> Actions).
+# Die alte PA-API 5.0 ist seit 2026-05-15 abgeschaltet — AMAZON_PAAPI_* niemals wieder verdrahten.
 # Keys liegen NIE im Code/Repo, nur als Secrets.
 
 on:
@@ -37,12 +38,10 @@ jobs:
 
       - name: Fetch Amazon products
         env:
-          AMAZON_PAAPI_ACCESS_KEY: ${{ secrets.AMAZON_PAAPI_ACCESS_KEY }}
-          AMAZON_PAAPI_SECRET_KEY: ${{ secrets.AMAZON_PAAPI_SECRET_KEY }}
-          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
-          AMAZON_HOST: webservices.amazon.de
-          AMAZON_REGION: eu-west-1
-          AMAZON_MARKETPLACE: www.amazon.de
+          AMAZON_CREATOR_CLIENT_ID: ${{ secrets.AMAZON_CREATOR_CLIENT_ID }}
+          AMAZON_CREATOR_CLIENT_SECRET: ${{ secrets.AMAZON_CREATOR_CLIENT_SECRET }}
+          AMAZON_CREATOR_PARTNER_TAG: ${{ secrets.AMAZON_CREATOR_PARTNER_TAG }}
+          AMAZON_CREATOR_MARKETPLACE: www.amazon.de
         run: npm run amazon
 
       - name: Commit refreshed data

@@ -18,7 +18,40 @@ const list: string[] = asins ?? groupObj?.asins ?? [];
 const title = heading ?? groupObj?.title ?? null;
 
 // nur ASINs zeigen, zu denen es gefetchte Produktdaten gibt
-const available = list.filter((a) => (products as Record<string, any>)[a]?.title);
+const found = list.filter((a) => (products as Record<string, any>)[a]?.title);
+
+// SearchItems liefert oft mehrere Varianten desselben Artikels (Farbe/Groesse) als
+// eigene ASINs. Dedupe ueber Marke + Titelstamm, damit jedes Produkt nur einmal steht.
+// Spiegelt variantKey() in scripts/fetch-amazon.mjs.
+const VARIANT_WORDS = new Set(['größe','groesse','grösse','gr','eu','us','uk','numerisch','erwachsene','schuhgrößensystem','braun','dunkelbraun','hellbraun','schwarz','weiß','weiss','beige','rot','blau','grün','gruen','grau','gold','silber','bunt','brown','black','white','red','blue','green','grey','gray','dark','light','farbe','color','colour']);
+function variantKey(p: any): string {
+  const base = String(p.title || '')
+    .split(/[(,]/)[0]              // "… Stiefel, Braun, 42" / "… (Schwarz, EU 41)" abschneiden
+    .toLowerCase()
+    .replace(/[^a-z0-9äöüß]+/g, ' ')
+    .split(' ')
+    // Groessen-, Farb- und Einzelbuchstaben-Token raus: nur sie unterscheiden Varianten
+    .filter((t) => t.length > 1 && !/^\d+$/.test(t) && !VARIANT_WORDS.has(t))
+    .slice(0, 6)
+    .join(' ');
+  return `${String(p.brand || '').toLowerCase()}|${base}`;
+}
+// Dedupe gilt pro SEITE, nicht pro Grid: auf der Startseite stehen zwei Grids
+// untereinander, die sonst dieselbe Sandale in zwei Farben zeigen wuerden.
+// Key -> ASIN (statt Set), damit ein erneutes Rendern derselben Seite im Dev-Server
+// idempotent bleibt: das Grid, dem der Key gehoert, behaelt ihn.
+const claimedByPage: Map<string, Map<string, string>> =
+  ((globalThis as any).__amzClaimed ??= new Map());
+const claimed = claimedByPage.get(Astro.url.pathname)
+  ?? claimedByPage.set(Astro.url.pathname, new Map()).get(Astro.url.pathname)!;
+
+const available = found.filter((a) => {
+  const key = variantKey((products as Record<string, any>)[a]);
+  const owner = claimed.get(key);
+  if (owner && owner !== a) return false; // Variante eines Produkts, das schon auf der Seite steht
+  claimed.set(key, a);
+  return true;
+});
 ---
 {available.length > 0 && (
   <section class="amzgrid-wrap">

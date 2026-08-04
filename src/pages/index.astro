@@ -204,7 +204,7 @@ const faq = [
       <div class="faq-list">
         {faq.map((f) => (
           <div class="faq-it">
-            <h3><span class="q">F</span> {f.q}</h3>
+            <h3>{f.q}</h3>
             <p>{f.a}</p>
           </div>
         ))}
@@ -305,9 +305,8 @@ const faq = [
 
   .faq-list{display:flex;flex-direction:column;max-width:860px;margin:0 auto;border-top:1px solid var(--line)}
   .faq-it{border-bottom:1px solid var(--line);padding:22px 4px}
-  .faq-it h3{font-size:23px;margin-bottom:9px;display:flex;gap:11px;align-items:baseline}
-  .faq-it h3 .q{color:var(--brass);font-size:16px;font-family:'Inter';font-weight:700}
-  .faq-it p{font-size:15px;color:#5a4634;padding-left:27px}
+  .faq-it h3{font-size:23px;margin-bottom:9px}
+  .faq-it p{font-size:15px;color:#5a4634}
 
   .ctaband{background:var(--oxblood);color:#fbeee7;border-radius:20px;padding:50px;text-align:center;position:relative;overflow:hidden}
   .ctaband h2{color:#fff;font-size:38px;margin-bottom:12px}

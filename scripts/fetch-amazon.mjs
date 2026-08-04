@@ -3,6 +3,8 @@
  * fetch-amazon.mjs — holt Produktdaten von der Amazon Creators API fuer historische-schuhe.de
  *
  * Ersetzt die abgeschaltete PA-API 5.0 (SigV4). Neue Auth: OAuth2 client-credentials.
+ * Gleiche Konvention wie scooter-elektrik.de/scripts/fetch-amazon-prices.mjs
+ * (Referenz-Implementierung fuer alle Amazon-Affiliate-Repos).
  *
  * Pro Gruppe in src/data/amazon-asins.json:
  *   - feste "asins": []  -> getItems holt genau diese ASINs
@@ -11,15 +13,11 @@
  *
  * Output: src/data/amazon-products.json (keyed by ASIN).
  *
- * Credentials (in dieser Reihenfolge):
- *   1. process.env  (z.B. GitHub Actions Secrets)
- *   2. Projekt-Tag/Marktplatz: .secrets/amazon-paapi-historische-schuhe.env
- *   3. Shared Creators-Creds:  .secrets/amazon-creators-api.env
- *
- * Erwartete Variablen:
- *   CREATORS_CREDENTIAL_ID, CREATORS_CREDENTIAL_SECRET   (OAuth2-App, shared)
- *   AMAZON_PARTNER_TAG                                    (projekt-spezifisch)
- *   CREATORS_MARKETPLACE / AMAZON_MARKETPLACE (default www.amazon.de)
+ * Credentials: .env im Repo-Root (gitignored) oder process.env (CI-Secrets):
+ *   AMAZON_CREATOR_CLIENT_ID
+ *   AMAZON_CREATOR_CLIENT_SECRET
+ *   AMAZON_CREATOR_PARTNER_TAG      (historische-schuhe.de-21)
+ *   AMAZON_CREATOR_MARKETPLACE      (default www.amazon.de)
  *
  * Nutzung:  npm run amazon
  */
@@ -29,43 +27,35 @@ import { dirname, resolve } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const CREATORS_FILE = '/Users/joshuastark/Documents/Claude Code/.secrets/amazon-creators-api.env';
-const PROJECT_FILE = '/Users/joshuastark/Documents/Claude Code/.secrets/amazon-paapi-historische-schuhe.env';
 const ASINS_PATH = resolve(ROOT, 'src/data/amazon-asins.json');
 const OUT_PATH = resolve(ROOT, 'src/data/amazon-products.json');
 
-/* --- 1. Env laden (Projekt-Tag + shared Creators-Creds) --- */
-function loadEnvFile(path) {
-  if (!existsSync(path)) return {};
+/* --- 1. Env laden (.env im Repo-Root, process.env gewinnt) --- */
+function loadEnv() {
   const out = {};
-  for (const line of readFileSync(path, 'utf8').split('\n')) {
-    const t = line.trim();
-    if (!t || t.startsWith('#')) continue;
-    const i = t.indexOf('=');
-    if (i === -1) continue;
-    out[t.slice(0, i).trim()] = t.slice(i + 1).trim();
+  const path = resolve(ROOT, '.env');
+  if (existsSync(path)) {
+    for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+      if (m) out[m[1]] = m[2].replace(/^["']|["']$/g, '');
+    }
   }
-  return out;
+  return { ...out, ...process.env };
 }
-const fileEnv = { ...loadEnvFile(PROJECT_FILE), ...loadEnvFile(CREATORS_FILE) };
-const env = (k, d) => process.env[k] || fileEnv[k] || d;
+const env = loadEnv();
 
-const CLIENT_ID = env('CREATORS_CREDENTIAL_ID');
-const CLIENT_SECRET = env('CREATORS_CREDENTIAL_SECRET');
-const TAG = env('AMAZON_PARTNER_TAG');
-const MARKETPLACE = env('CREATORS_MARKETPLACE') || env('AMAZON_MARKETPLACE', 'www.amazon.de');
-const TOKEN_URL = 'https://api.amazon.com/auth/o2/token';
+const CLIENT_ID = env.AMAZON_CREATOR_CLIENT_ID;
+const CLIENT_SECRET = env.AMAZON_CREATOR_CLIENT_SECRET;
+const TAG = env.AMAZON_CREATOR_PARTNER_TAG;
+const MARKETPLACE = env.AMAZON_CREATOR_MARKETPLACE || 'www.amazon.de';
+// EU-Token-Endpoint fuer .de-Konten (nicht api.amazon.com).
+const TOKEN_URL = 'https://api.amazon.co.uk/auth/o2/token';
 const GETITEMS_URL = 'https://creatorsapi.amazon/catalog/v1/getItems';
 const SEARCHITEMS_URL = 'https://creatorsapi.amazon/catalog/v1/searchItems';
 
 if (!CLIENT_ID || !CLIENT_SECRET || !TAG) {
-  console.error('FEHLER: Credentials fehlen (CREATORS_CREDENTIAL_ID/SECRET oder AMAZON_PARTNER_TAG).');
-  console.error('.secrets/amazon-creators-api.env und .secrets/amazon-paapi-historische-schuhe.env pruefen.');
-  process.exit(1);
-}
-if (TAG.startsWith('PENDING')) {
-  console.error('FEHLER: AMAZON_PARTNER_TAG ist noch ein Platzhalter ("' + TAG + '").');
-  console.error('Echten historische-schuhe.de Partner-Tag in .secrets/amazon-paapi-historische-schuhe.env eintragen, dann erneut ausfuehren.');
+  console.error('FEHLER: AMAZON_CREATOR_CLIENT_ID / _CLIENT_SECRET / _PARTNER_TAG fehlen.');
+  console.error('Lokal: .env im Repo-Root anlegen. CI: GitHub-Secrets gleichen Namens setzen.');
   process.exit(1);
 }
 
@@ -147,8 +137,31 @@ async function searchItems(token, keyword, searchIndex, count) {
   return { ok: true, items: JSON.parse(text)?.searchResult?.items || [] };
 }
 
+const today = new Date().toISOString().slice(0, 10);
+
+/**
+ * Farb-/Groessen-Varianten desselben Artikels kommen als eigene ASINs zurueck
+ * ("… Stiefel, Braun, 42" / "… (Schwarz, EU 41)"). Gleicher Key = gleiches Produkt.
+ * Spiegelt variantKey() in src/components/AmazonBoxGrid.astro.
+ */
+const VARIANT_WORDS = new Set(['größe','groesse','grösse','gr','eu','us','uk','numerisch','erwachsene','schuhgrößensystem','braun','dunkelbraun','hellbraun','schwarz','weiß','weiss','beige','rot','blau','grün','gruen','grau','gold','silber','bunt','brown','black','white','red','blue','green','grey','gray','dark','light','farbe','color','colour']);
+function variantKey(p) {
+  const base = String(p.title || '')
+    .split(/[(,]/)[0]
+    .toLowerCase()
+    .replace(/[^a-z0-9äöüß]+/g, ' ')
+    .split(' ')
+    // Groessen-, Farb- und Einzelbuchstaben-Token raus: nur sie unterscheiden Varianten
+    .filter((t) => t.length > 1 && !/^\d+$/.test(t) && !VARIANT_WORDS.has(t))
+    .slice(0, 6)
+    .join(' ');
+  return `${String(p.brand || '').toLowerCase()}|${base}`;
+}
+
 function normalize(item) {
-  const listing = item.offersV2?.listings?.[0];
+  const listings = item.offersV2?.listings || [];
+  const listing = listings.find((l) => l.isBuyBoxWinner) || listings[0];
+  const money = listing?.price?.money;
   return {
     asin: item.asin,
     title: item.itemInfo?.title?.displayValue || '',
@@ -156,11 +169,13 @@ function normalize(item) {
         || item.itemInfo?.byLineInfo?.manufacturer?.displayValue || '',
     features: item.itemInfo?.features?.displayValues?.slice(0, 3) || [],
     image: item.images?.primary?.large?.url || '',
-    price: listing?.price?.money?.displayAmount || '',
-    priceAmount: listing?.price?.money?.amount ?? null,
+    price: money?.displayAmount || '',
+    priceAmount: money?.amount ?? null,
+    // Associates-Bedingungen: ein angezeigter Preis braucht ein Stand-Datum.
+    priceUpdated: money?.amount != null ? today : null,
     isPrime: !!listing?.deliveryInfo?.isPrimeEligible,
     url: item.detailPageURL || '', // enthaelt bereits den Partner-Tag
-    fetchedAt: new Date().toISOString().slice(0, 10),
+    fetchedAt: today,
   };
 }
 
@@ -172,30 +187,69 @@ if (existsSync(OUT_PATH)) {
   try { products = JSON.parse(readFileSync(OUT_PATH, 'utf8')) || {}; } catch { products = {}; }
 }
 let total = 0;
+let withPrice = 0;
 const groups = Object.entries(asinData).filter(([k]) => !k.startsWith('_'));
 
 console.log(`Amazon Creators API: Tag=${TAG}, Marktplatz=${MARKETPLACE}, ${groups.length} Gruppen`);
 const token = await getToken();
 
 for (const [key, g] of groups) {
-  let items = [];
+  const want = g.count || 6;
+  const picked = [];      // normalisierte Produkte, dedupliziert
+  const seen = new Set(); // variantKey der bereits uebernommenen Produkte
+
+  const take = (items) => {
+    let added = 0;
+    for (const it of items) {
+      const p = normalize(it);
+      if (!p.title) continue;
+      const k = variantKey(p);
+      if (seen.has(k)) continue; // Farb-/Groessenvariante eines schon gelisteten Artikels
+      seen.add(k);
+      picked.push(p);
+      added++;
+    }
+    return added;
+  };
+
   if (g.asins && g.asins.length > 0) {
     const r = await getItems(token, g.asins);
-    if (!r.ok) { console.warn(`  ! ${key} getItems ${r.status}: ${r.body.slice(0, 200)}`); }
-    else items = r.items;
-  } else if (g.keyword) {
-    const r = await searchItems(token, g.keyword, g.searchIndex, g.count);
-    if (!r.ok) { console.warn(`  ! ${key} searchItems ${r.status}: ${r.body.slice(0, 200)}`); }
-    else items = r.items;
-    // gefundene ASINs in die Gruppe zurueckschreiben
-    g.asins = items.map((it) => it.asin);
+    if (!r.ok) console.warn(`  ! ${key} getItems ${r.status}: ${r.body.slice(0, 200)}`);
+    else take(r.items);
   }
-  for (const it of items) { products[it.asin] = normalize(it); total++; }
-  console.log(`  ${key}: ${items.length} Produkte`);
+  // Zu wenige eigenstaendige Produkte (z.B. weil Varianten rausgefallen sind) -> per Keyword auffuellen
+  if (picked.length < want && g.keyword) {
+    await sleep(1500);
+    const r = await searchItems(token, g.keyword, g.searchIndex, 10);
+    if (!r.ok) console.warn(`  ! ${key} searchItems ${r.status}: ${r.body.slice(0, 200)}`);
+    else take(r.items);
+  }
+
+  const finalItems = picked.slice(0, want);
+  g.asins = finalItems.map((p) => p.asin);
+
+  let groupPrices = 0;
+  for (const p of finalItems) {
+    products[p.asin] = p;
+    total++;
+    if (p.priceAmount != null) groupPrices++;
+  }
+  withPrice += groupPrices;
+  console.log(`  ${key}: ${finalItems.length} Produkte, ${groupPrices} mit Preis`);
   await sleep(1500); // Drossel
 }
 
+// Nicht mehr verlinkte ASINs (ausgetauschte Varianten) rauswerfen — sonst bleiben
+// veraltete Preise mit altem Stand-Datum in der Datei liegen.
+const referenced = new Set(groups.flatMap(([, g]) => g.asins || []));
+for (const asin of Object.keys(products)) if (!referenced.has(asin)) delete products[asin];
+
 writeFileSync(OUT_PATH, JSON.stringify(products, null, 2) + '\n', 'utf8');
 writeFileSync(ASINS_PATH, JSON.stringify(asinData, null, 2) + '\n', 'utf8');
-console.log(`\nFertig: ${total} Produkte -> src/data/amazon-products.json`);
+console.log(`\nFertig: ${total} Produkte (${withPrice} mit Preis) -> src/data/amazon-products.json`);
 console.log(`Gefundene ASINs zurueckgeschrieben -> src/data/amazon-asins.json`);
+if (total > 0 && withPrice === 0) {
+  // Frueher still durchgelaufen: Seite zeigte monatelang nur "Preis bei Amazon".
+  console.error('WARNUNG: kein einziger Preis geliefert — offersV2-Resource oder Partner-Tag pruefen.');
+  process.exit(2);
+}
