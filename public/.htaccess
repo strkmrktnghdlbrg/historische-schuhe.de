@@ -27,6 +27,9 @@
   RewriteRule ^thema/adlig/?$                 /epochen/                      [R=301,L]
   RewriteRule ^thema/koeniglich/?$            /epochen/                      [R=301,L]
   RewriteRule ^thema/kulturen/?$              /kulturen/                     [R=301,L]
+  # Silo "stil" entfaellt. Lag vorher als Meta-Refresh-Stub (HTTP 200 + noindex)
+  # in src/pages/stile/ - Google wertet das nicht als Weiterleitung.
+  RewriteRule ^stile/?$                       /kulturen/                     [R=301,L]
   RewriteRule ^thema/schuhe/?$                /schuhtypen/                   [R=301,L]
   RewriteRule ^thema/schuhe-kleidung/?$       /ratgeber/                     [R=301,L]
   RewriteRule ^thema/schuhmacherei/?$         /ratgeber/                     [R=301,L]

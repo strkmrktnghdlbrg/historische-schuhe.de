@@ -7,7 +7,14 @@ import outboundGate from './integrations/outbound-gate.mjs';
 export default defineConfig({
   site: 'https://www.historische-schuhe.de',
   trailingSlash: 'always',
-  integrations: [outboundGate(), sitemap()],
+  integrations: [outboundGate(), sitemap({
+      // noindex-Seiten gehoeren nicht in die Sitemap (GSC meldet sie sonst
+      // als "Durch noindex-Tag ausgeschlossen").
+      filter: (page) =>
+        !page.includes("/datenschutz") &&
+        !page.includes("/impressum") &&
+        !page.includes("/stile"),
+    })],
   vite: {
     plugins: [tailwindcss()],
   },
