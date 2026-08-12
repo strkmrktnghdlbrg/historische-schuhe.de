@@ -10,5 +10,5 @@ export function amazonSearch(query: string): string {
 
 // Amazon-Produktlink per ASIN mit Partner-Tag.
 export function amazonProduct(asin: string): string {
-  return `https://www.amazon.de/dp/${asin}?tag=${AMAZON_TAG}`;
+  return `https://www.amazon.de/dp/${asin}?tag=${AMAZON_TAG}&th=1&psc=1`;
 }
