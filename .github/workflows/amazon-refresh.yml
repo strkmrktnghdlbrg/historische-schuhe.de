@@ -9,7 +9,7 @@ name: Amazon-Produktdaten aktualisieren
 
 on:
   schedule:
-    - cron: "0 4 * * 1" # jeden Montag 04:00 UTC
+    - cron: "45 3 * * *" # jeden Montag 04:00 UTC
   workflow_dispatch:
 
 permissions:
