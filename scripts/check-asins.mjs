@@ -94,10 +94,20 @@ async function getItems(token, ids, attempt = 0) {
   if (!res.ok) {
     // 429 und 5xx sind vorübergehend. Ohne Retry fehlt still ein ganzer
     // Zehnerblock und die Seite gilt fälschlich als sauber.
-    if ((res.status === 429 || res.status >= 500) && attempt < 4) {
-      await sleep(2000 * 2 ** attempt);
+    if ((res.status === 429 || res.status >= 500) && attempt < 5) {
+      await sleep(3000 * 2 ** attempt);
       return getItems(token, ids, attempt + 1);
     }
+    // Auch nach den Versuchen noch gedrosselt: NICHT werfen. Eine Drosselung
+    // ist keine Aussage über die Produkte, und ein rotes X dafür ist genau
+    // das Rauschen, das dieser Job vermeiden soll. Der Block landet als
+    // "unklar" im Bericht; die Reissleine unten fängt den Fall ab, dass so
+    // viel gedrosselt wurde, dass der Lauf nichts mehr aussagt.
+    if (res.status === 429 || res.status >= 500) {
+      return { items: [], errors: [], gedrosselt: true };
+    }
+    // 4xx dagegen betrifft die Anfrage selbst — falscher Tag, abgelaufene
+    // Zugangsdaten, falscher Marktplatz. Das muss laut scheitern.
     throw new Error(`getItems HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
   }
   const data = await res.json();
@@ -143,7 +153,13 @@ let ok = 0;
 
 for (let i = 0; i < asins.length; i += 10) {
   const batch = asins.slice(i, i + 10);
-  const { items, errors } = await getItems(token, batch);
+  const { items, errors, gedrosselt } = await getItems(token, batch);
+  if (gedrosselt) {
+    for (const id of batch) unklar.push({ asin: id, file: where.get(id) || '', grund: 'gedrosselt' });
+    process.stdout.write(`  ${Math.min(i + 10, asins.length)}/${asins.length}\r`);
+    await sleep(2000);
+    continue;
+  }
   const grund = {};
   for (const err of errors) {
     for (const id of batch) {
@@ -193,10 +209,23 @@ liste('NICHT ABRUFBAR — steht bei Amazon, kommt nur nicht über die API:', nic
   (e) => `${e.asin}  [${e.grund}]`);
 liste('UNKLAR — meist Drosselung, zweiter Lauf lohnt:', unklar, (e) => `${e.asin}  [${e.grund}]`);
 
+// Reissleine: Wenn die Drosselung mehr als die Hälfte verschluckt hat, ist der
+// Lauf keine Entwarnung, sondern ein kaputter Lauf. Das muss auffallen — sonst
+// meldet der Job wochenlang "nichts gefunden", weil er nichts prüfen konnte.
+const nichtsGesehen = ok + ohneAngebot.length + weg.length + nichtAbrufbar.length;
+if (nichtsGesehen < asins.length / 2) {
+  console.log(
+    `::error::Nur ${nichtsGesehen} von ${asins.length} ASINs konnten geprüft werden — ` +
+      'überwiegend Drosselung. Der Lauf sagt nichts aus, bitte später wiederholen.',
+  );
+  process.exit(reportOnly ? 0 : 1);
+}
+
 // Nur der Fall "weg" verlangt eine Handlung, also kippt auch nur er den Job.
 // Alles andere ist eine Beobachtung und steht als Warnung im Lauf.
 if (ohneAngebot.length) console.log(`::warning::${ohneAngebot.length} von ${asins.length} ASINs ohne kaufbares Angebot`);
 if (nichtAbrufbar.length) console.log(`::warning::${nichtAbrufbar.length} ASINs nicht über die API abrufbar`);
+if (unklar.length) console.log(`::warning::${unklar.length} ASINs ungeprüft (meist Drosselung)`);
 if (weg.length) console.log(`::error::${weg.length} von ${asins.length} ASINs existieren nicht mehr`);
 
 process.exit(!reportOnly && weg.length ? 1 : 0);
