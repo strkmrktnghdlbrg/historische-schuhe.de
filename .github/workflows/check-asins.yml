@@ -1,0 +1,61 @@
+# Meldet wöchentlich, welche verlinkten Amazon-Produkte nichts mehr einbringen.
+#
+# Ohne diese Prüfung fällt Sortimentsschwund nicht auf: Der Affiliate-Link
+# funktioniert weiter, führt aber auf eine Seite ohne Kaufoption — oder ins
+# Leere. Gemessen am 21.08.2026 traf das portfolioweit einen zweistelligen
+# Prozentsatz der ASINs.
+#
+# ROT wird der Job NUR, wenn eine ASIN endgültig weg ist (InvalidParameterValue
+# oder ItemNotFound; amazon.de antwortet dann mit "Seite wurde nicht gefunden").
+# Das ist der Fall, der eine Handlung verlangt: Eintrag ersetzen.
+#
+# Produkte, die nur gerade nicht lieferbar sind, stehen als Warnung im Lauf und
+# lassen den Job grün. Sie kommen oft von selbst zurück, und ein rotes X jeden
+# Montag für ein Produkt, das nächste Woche wieder auf Lager ist, erzieht nur
+# dazu, das X zu ignorieren.
+#
+# Reiner Bericht ohne Fehlschlag: --report an den Aufruf hängen.
+#
+# Der Partner-Tag kommt aus dem Repository-Secret. Hinterlegt ist dort: src/data/affiliate.ts — nicht geraten.
+name: ASIN-Verfügbarkeit prüfen
+
+on:
+  schedule:
+    # Montags, versetzt zu den anderen Portalen — die API drosselt, und
+    # gleichzeitig startende Läufe drosseln sich gegenseitig.
+    - cron: '35 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Zugangsdaten vorhanden?
+        env:
+          ID: ${{ secrets.AMAZON_CREATOR_CLIENT_ID }}
+          SECRET: ${{ secrets.AMAZON_CREATOR_CLIENT_SECRET }}
+        run: |
+          missing=""
+          [ -z "$ID" ] && missing="$missing AMAZON_CREATOR_CLIENT_ID"
+          [ -z "$SECRET" ] && missing="$missing AMAZON_CREATOR_CLIENT_SECRET"
+          if [ -n "$missing" ]; then
+            echo "::error::Fehlende Repository-Secrets:$missing"
+            exit 1
+          fi
+
+      - name: ASINs prüfen
+        env:
+          AMAZON_CREATOR_CLIENT_ID: ${{ secrets.AMAZON_CREATOR_CLIENT_ID }}
+          AMAZON_CREATOR_CLIENT_SECRET: ${{ secrets.AMAZON_CREATOR_CLIENT_SECRET }}
+          AMAZON_CREATOR_PARTNER_TAG: ${{ secrets.AMAZON_CREATOR_PARTNER_TAG }}
+          AMAZON_CREATOR_MARKETPLACE: www.amazon.de
+        run: node scripts/check-asins.mjs
