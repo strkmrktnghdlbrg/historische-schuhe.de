@@ -24,7 +24,6 @@ const IMAGES = [
   { slug: 'roemische-legionaersschuhe', q: 'Roman caliga hobnail Vindolanda shoe', inc: ['caliga', 'hobnail', 'sandal', 'shoe', 'footwear'], avoid: ['good friday', 'procession', 'malta', 'zebbug', 'statue', 'reenact'] },
   // MITTELALTER
   { slug: 'schuhe-im-mittelalter', q: 'medieval leather turnshoe FindID', inc: ['shoe', 'schuh', 'turnshoe'] },
-  { slug: 'schuhe-des-mittelalters', q: 'medieval welted leather shoe FindID', inc: ['shoe', 'schuh', 'turnshoe'] },
   { slug: 'schuhe-des-hochmittelalters', q: 'medieval leather shoe poulaine museum', inc: ['shoe', 'poulaine', 'schuh'] },
   { slug: 'mittelalterliche-stiefel-schuhe', q: 'medieval leather boot reproduction', inc: ['boot', 'shoe', 'stiefel'] },
   // RENAISSANCE / BAROCK
@@ -36,10 +35,8 @@ const IMAGES = [
   { slug: 'franzoesische-hofschuhe', q: 'silk court shoe 18th century LACMA MET', inc: ['shoe', 'mule', 'slipper'] },
   // 18. JH
   { slug: 'schuhe-des-18-jahrhunderts', q: '18th century silk shoe pair MET', inc: ['shoe', 'mule', 'slipper', 'schuh'] },
-  { slug: 'schuhe-des-18-jahrhunderts-in-europa', q: '18th century leather shoe MET European', inc: ['shoe', 'mule', 'schuh'] },
   // 19. JH
   { slug: 'schuhe-des-19-jahrhunderts', q: '19th century button boot leather MET', inc: ['boot', 'shoe', 'schuh', 'stiefel'] },
-  { slug: 'schuhe-19-jahrhundert', q: '19th century leather shoe MET pair', inc: ['shoe', 'boot', 'schuh'] },
   { slug: 'stiefel-schuhe-19-jahrhunderts', q: '19th century riding boot leather MET', inc: ['boot', 'stiefel', 'shoe'], avoid: ['klomp', 'clog', 'sabot', 'muiltje'] },
   { slug: 'schuhe-viktorianischen-aera', q: 'Victorian leather boot 19th century MET', inc: ['boot', 'shoe', 'bootee'], avoid: ['klomp', 'clog', 'sabot', 'muiltje'] },
   { slug: 'napoleonische-marschstiefel-schuhe', q: 'Hessian boot 19th century leather MET', inc: ['boot', 'hessian', 'stiefel'] },
@@ -66,12 +63,27 @@ const IMAGES = [
   { slug: 'wendegenaehte-schuhe-erklaert', q: 'turnshoe medieval leather reproduction', inc: ['turnshoe', 'shoe', 'schuh'] },
   { slug: 'schuhe-erster-mittelaltermarkt-einsteiger', q: 'medieval reenactment living history shoes', inc: ['shoe', 'reenactment', 'schuh', 'turnshoe'] },
   { slug: 'beste-shops-apps-historische-schuhe-kaufen', q: 'leather shoes pair Bata Shoe Museum', inc: ['shoe', 'boot', 'footwear'] },
+  // NEU 2026-08-31 (War-Map-Umsetzung)
+  { slug: 'bundschuhe', q: 'medieval leather turnshoe laced FindID', inc: ['shoe', 'schuh', 'turnshoe', 'footwear'], avoid: ['boot'] },
+  { slug: 'schnabelschuhe', q: 'poulaine pointed medieval shoe museum', inc: ['poulaine', 'shoe', 'crakow', 'schnabel'] },
+  { slug: 'schuhe-selber-machen-mittelalter', q: 'shoemaker awl leather hand sewing workshop', inc: ['shoemaker', 'cobbler', 'awl', 'leather', 'shoe', 'last'] },
+  { slug: 'haferlschuhe', q: 'Haferlschuh Bavarian traditional shoe', inc: ['haferl', 'shoe', 'schuh', 'tracht'] },
+  { slug: 'haferlschuhe-herren', q: 'Haferlschuh leather Bavarian men shoe', inc: ['haferl', 'shoe', 'schuh'] },
+  { slug: 'trachtenschuhe-damen', q: 'Trachten shoe Bavarian folk costume women', inc: ['tracht', 'shoe', 'schuh', 'dirndl'] },
+  { slug: 'trachtenschuhe-herren', q: 'Bavarian folk costume shoes Lederhosen men', inc: ['tracht', 'shoe', 'schuh', 'haferl'] },
   // HERO (Startseite)
   { slug: '_hero', q: 'leather shoes pair Bata Shoe Museum collection', inc: ['shoe', 'boot', 'footwear', 'sandal'] },
 ];
 
 // Fuer schwierige Slugs: gezielte, real existierende Commons-Kategorien (nur passende Dateien).
 const CATS = {
+  'schnabelschuhe': ['Poulaines', 'Crakows'],
+  'haferlschuhe': ['Haferlschuh', 'Traditional shoes of Germany'],
+  'haferlschuhe-herren': ['Haferlschuh'],
+  'trachtenschuhe-damen': ['Haferlschuh', 'Traditional shoes of Germany'],
+  'trachtenschuhe-herren': ['Haferlschuh', 'Traditional shoes of Germany'],
+  'bundschuhe': ['Archaeological leather shoes', 'Medieval shoes'],
+  'schuhe-selber-machen-mittelalter': ['Shoemaking', 'Shoemaker\'s tools'],
   'roemische-legionaersschuhe': ['Caliga'],
   'renaissance-schuhe': ['16th-century shoes', 'Chopines'],
   'barocke-damenschuhe': ['17th-century shoes', '18th-century mules (footwear)'],
@@ -94,6 +106,14 @@ const CATS = {
   'wendegenaehte-schuhe-erklaert': ['14th-century shoes', '15th-century shoes'],
   'schuhe-erster-mittelaltermarkt-einsteiger': ['15th-century shoes', '13th-century shoes'],
   '_hero': ['Archaeological leather shoes', '11th-century shoes'],
+};
+
+// Einzelne, handverlesene Commons-Dateien. Noetig, wo Commons zum Motiv nur ein
+// oder zwei brauchbare Bilder hat und diese in unspezifischen Kategorien
+// ("Male black leather shoes") liegen, die eine Kategoriesuche nicht findet.
+const FILES = {
+  'haferlschuhe': 'File:Haferlschuhe mit Krampen (fcm).jpg',
+  'haferlschuhe-herren': 'File:Haferlschuh.JPG',
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -151,8 +171,17 @@ async function run() {
     if (registry[item.slug]) { report.push(`KEEP  ${item.slug}  <-  ${registry[item.slug].title}`); continue; }
     try {
       let c = null;
+      // 0) Handverlesene Einzeldatei (siehe FILES)
+      if (FILES[item.slug]) {
+        const d = await api({
+          action: 'query', titles: FILES[item.slug],
+          prop: 'imageinfo', iiprop: 'url|extmetadata|mime|size', iiurlwidth: '1280',
+        });
+        c = candidates(d.query?.pages || {})[0] || null;
+        if (!c) console.warn(`  WARN ${item.slug}: ${FILES[item.slug]} nicht abrufbar`);
+      }
       // 1) Kategorien (zuverlaessig relevant)
-      for (const cat of (CATS[item.slug] || [])) {
+      for (const cat of (c ? [] : CATS[item.slug] || [])) {
         const d = await api({
           action: 'query', generator: 'categorymembers', gcmtitle: 'Category:' + cat,
           gcmtype: 'file', gcmlimit: '40',

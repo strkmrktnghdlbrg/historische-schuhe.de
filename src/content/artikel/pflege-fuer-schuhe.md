@@ -33,6 +33,8 @@ Hier lohnt es sich, die Mittel auseinanderzuhalten, weil sie unterschiedliche Au
 
 Eine sinnvolle Reihenfolge ist: erst reinigen, dann nähren mit Creme oder Fett, dann bei Bedarf wachsen und zum Schluss imprägnieren. Teste jedes neue Mittel an einer verdeckten Stelle, besonders bei pflanzlich gegerbtem Leder, das auf Fette empfindlicher reagieren kann. Wie viel Fett ein bestimmtes Leder verträgt, hängt von der Gerbung ab, deshalb gehen wir darauf im vertiefenden Beitrag zum [Leder pflegen bei historischen Schuhen](/leder-pflegen-historische-schuhe/) ausführlicher ein.
 
+Bei Trachtenschuhen ist diese Unterscheidung besonders heikel, weil Fett- und Rauleder dort oft nebeneinander verkauft werden. Was das für [Haferlschuhe](/haferlschuhe/) heißt, steht dort im eigenen Pflegeabschnitt.
+
 ## Wildleder, Velours und Nubuk
 
 Wildleder, Velours und Nubuk brauchen eine andere Behandlung als glattes Leder, weil ihre raue, aufgeraute Oberfläche kein Fett und keine glänzende Creme verträgt. Fett würde die feine Faserstruktur verkleben und dunkle, speckige Flecken hinterlassen. Stattdessen gilt:

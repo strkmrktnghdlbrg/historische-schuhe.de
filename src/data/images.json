@@ -31,14 +31,6 @@
     "source": "https://commons.wikimedia.org/wiki/File:11th_century_shoe_(FindID_971263).jpg",
     "title": "11th century shoe (FindID 971263).jpg"
   },
-  "schuhe-des-mittelalters": {
-    "src": "/images/articles/schuhe-des-mittelalters.jpg",
-    "credit": "Kent County Council, Hannah Page, 2014-01-08 13:32:11",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:KENT-D34172,_An_incomplete_Medieval_to_Early_Modern_leather_welted_shoe._(FindID_594072).jpg",
-    "title": "KENT-D34172, An incomplete Medieval to Early Modern leather welted shoe. (FindID 594072).jpg"
-  },
   "schuhe-des-hochmittelalters": {
     "src": "/images/articles/schuhe-des-hochmittelalters.jpg",
     "credit": "Thomas Quine",
@@ -86,14 +78,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:La_declaration_d_amour_1731_JF_Troy_1504762.jpg",
     "title": "La declaration d amour 1731 JF Troy 1504762.jpg"
-  },
-  "schuhe-des-18-jahrhunderts-in-europa": {
-    "src": "/images/articles/schuhe-des-18-jahrhunderts-in-europa.jpg",
-    "credit": "Unbekannt",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Shoes_MET_24.560a-b_CP4.jpg",
-    "title": "Shoes MET 24.560a-b CP4.jpg"
   },
   "schuhe-der-1920er-jahre": {
     "src": "/images/articles/schuhe-der-1920er-jahre.jpg",
@@ -150,14 +134,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:East_Greek_plastic_aryballos_-_left_foot_wearing_sandal_-_London_BM_1854-0810-5.jpg",
     "title": "East Greek plastic aryballos - left foot wearing sandal - London BM 1854-0810-5.jpg"
-  },
-  "schuhe-19-jahrhundert": {
-    "src": "/images/articles/schuhe-19-jahrhundert.jpg",
-    "credit": "Unbekannt",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Shoes_MET_CI69.24.4ab_F.jpg",
-    "title": "Shoes MET CI69.24.4ab F.jpg"
   },
   "schuhe-der-1950er-jahre": {
     "src": "/images/articles/schuhe-der-1950er-jahre.jpg",
@@ -295,6 +271,30 @@
     "source": "https://commons.wikimedia.org/wiki/File:Schoen_in_leer,_collectie_Raakvlak,_BR87-WU-4.jpg",
     "title": "Schoen in leer, collectie Raakvlak, BR87-WU-4.jpg"
   },
+  "bundschuhe": {
+    "src": "/images/articles/bundschuhe.jpg",
+    "credit": "Christoph Braun",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Schuhe_Sp%C3%A4t-_und_Hochmittelalter_IMG_0004_edit.jpg",
+    "title": "Schuhe Spät- und Hochmittelalter IMG 0004 edit.jpg"
+  },
+  "schnabelschuhe": {
+    "src": "/images/articles/schnabelschuhe.jpg",
+    "credit": "Unbekannt",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Crakows_MET_29.158.914_B.jpg",
+    "title": "Crakows MET 29.158.914 B.jpg"
+  },
+  "schuhe-selber-machen-mittelalter": {
+    "src": "/images/articles/schuhe-selber-machen-mittelalter.jpg",
+    "credit": "EvelienBauwens",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Evelienbauwens_Tanning_of_leather.jpg",
+    "title": "Evelienbauwens Tanning of leather.jpg"
+  },
   "roemische-legionaersschuhe": {
     "src": "/images/articles/roemische-legionaersschuhe.jpg",
     "credit": "Cangadoba",
@@ -308,8 +308,8 @@
     "credit": "Rijksmuseum",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Platte_schoen_van_geitenleer_met_versierd_voorblad_waarin_rozetten,_ruiten_en_wafelpatronen_zijn_gestanst,_BK-NM-7419-A.jpg",
-    "title": "Platte schoen van geitenleer met versierd voorblad waarin rozetten, ruiten en wafelpatronen zijn gestanst, BK-NM-7419-A.jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Rechtermuil,_maat_35,_met_een_drietal_ingeperste_lijnen_over_de_wreefboog,_fraai_geprofileerde_hak_en_natuurlijk_verlopend_voetbed,_NG-NM-7686-2.jpg",
+    "title": "Rechtermuil, maat 35, met een drietal ingeperste lijnen over de wreefboog, fraai geprofileerde hak en natuurlijk verlopend voetbed, NG-NM-7686-2.jpg"
   },
   "stiefel-schuhe-19-jahrhunderts": {
     "src": "/images/articles/stiefel-schuhe-19-jahrhunderts.jpg",
@@ -326,5 +326,21 @@
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
     "source": "https://commons.wikimedia.org/wiki/File:Boots_MET_31.658a-b_CP4.jpg",
     "title": "Boots MET 31.658a-b CP4.jpg"
+  },
+  "haferlschuhe": {
+    "src": "/images/articles/haferlschuhe.jpg",
+    "credit": "Photograph: Frank C. Müller, Baden-Baden",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Haferlschuhe_mit_Krampen_(fcm).jpg",
+    "title": "Haferlschuhe mit Krampen (fcm).jpg"
+  },
+  "haferlschuhe-herren": {
+    "src": "/images/articles/haferlschuhe-herren.jpg",
+    "credit": "Fritz Jörn",
+    "license": "CC BY-SA 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Haferlschuh.JPG",
+    "title": "Haferlschuh.JPG"
   }
 }

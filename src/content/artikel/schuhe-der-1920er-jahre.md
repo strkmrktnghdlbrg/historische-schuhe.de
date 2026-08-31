@@ -16,7 +16,7 @@ Kaum ein Jahrzehnt hat die Schuhmode so sichtbar verändert wie die 1920er Jahre
 
 ## Warum der Schuh überhaupt sichtbar wurde
 
-Bis ins [frühe 20. Jahrhundert](/schuhe-19-jahrhundert/) verschwand das Schuhwerk der Frau meist vollständig unter bodenlangen Kleidern. Das änderte sich in den 1920ern grundlegend. Die Säume stiegen, und damit gerieten Knöchel und Fuß erstmals in den modischen Mittelpunkt. Ein schöner Schuh war nun nicht mehr halb verborgen, sondern Teil der bewusst inszenierten Silhouette.
+Bis ins [frühe 20. Jahrhundert](/schuhe-des-19-jahrhunderts/) verschwand das Schuhwerk der Frau meist vollständig unter bodenlangen Kleidern. Das änderte sich in den 1920ern grundlegend. Die Säume stiegen, und damit gerieten Knöchel und Fuß erstmals in den modischen Mittelpunkt. Ein schöner Schuh war nun nicht mehr halb verborgen, sondern Teil der bewusst inszenierten Silhouette.
 
 Diese Verschiebung hatte mehrere Wurzeln:
 

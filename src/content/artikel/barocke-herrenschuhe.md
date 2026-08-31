@@ -50,7 +50,7 @@ Merkmale des klassischen Herren-Schnallenschuhs:
 - meist dunkles, poliertes Leder
 - die Schnalle als austauschbares Statusobjekt
 
-Gerade weil die Schnalle abnehmbar war, konnte man denselben Schuh dem Anlass anpassen, schlicht für den Alltag, [prunkvoll für den Hof](/schuhe-des-18-jahrhunderts-in-europa/). Wer sich genauer für diese Verschlüsse interessiert, findet bei den [barocken Schuhschnallen](/barocke-schuhschnallen-schuhe/) eine eigene Vertiefung.
+Gerade weil die Schnalle abnehmbar war, konnte man denselben Schuh dem Anlass anpassen, schlicht für den Alltag, [prunkvoll für den Hof](/schuhe-des-18-jahrhunderts/). Wer sich genauer für diese Verschlüsse interessiert, findet bei den [barocken Schuhschnallen](/barocke-schuhschnallen-schuhe/) eine eigene Vertiefung.
 
 ## Stulpen- und Trichterstiefel: Macht für draußen
 

@@ -20,7 +20,7 @@ Materialien der Antike waren fast immer pflanzlicher oder tierischer Herkunft: L
 
 ## Mittelalter
 
-Über viele Jahrhunderte prägten [wendegenähte Schuhe](/wendegenaehte-schuhe-erklaert/) das Bild: flexible Lederschuhe mit innenliegender Naht. Der Schuh wurde auf links genäht und anschließend gewendet, sodass die Naht geschützt im Inneren lag. Vom schlichten Bundschuh des Frühmittelalters bis zum modischen Schnabelschuh des Spätmittelalters reichte die Bandbreite. Gegen Nässe und Schmutz trug man hölzerne Trippen als Überschuh.
+Über viele Jahrhunderte prägten [wendegenähte Schuhe](/wendegenaehte-schuhe-erklaert/) das Bild: flexible Lederschuhe mit innenliegender Naht. Der Schuh wurde auf links genäht und anschließend gewendet, sodass die Naht geschützt im Inneren lag. Vom schlichten [Bundschuh](/bundschuhe/) bis zum modischen [Schnabelschuh](/schnabelschuhe/) des Spätmittelalters reichte die Bandbreite. Gegen Nässe und Schmutz trug man hölzerne Trippen als Überschuh.
 
 Die Grundmachart blieb erstaunlich lange konstant, während sich die Mode wandelte. Wie sich Früh-, Hoch- und Spätmittelalter unterscheiden, liest du im Beitrag zu den [Schuhen im Mittelalter](/schuhe-im-mittelalter/).
 
@@ -34,7 +34,7 @@ Geschnürte Stiefeletten und elegante Damenschuhe bestimmten das Bild. Mit der i
 
 ## Was das für deine Auswahl bedeutet
 
-Lege zuerst die Epoche deiner Darstellung fest, dann ergibt sich die passende Schuhform fast von selbst. Ein antiker Auftritt lebt von der Sandale, eine mittelalterliche Darstellung vom wendegenähten Bundschuh oder Stiefel, eine barocke von Schnalle und Absatz. Eine geordnete Übersicht findest du in unserem Bereich [Schuhe nach Epoche](/epochen/). Wenn du dich zwischen zwei Formen nicht entscheiden kannst, hilft der [Mittelalterschuhe-Vergleich](/mittelalterschuhe-vergleich/) bei der Abwägung zwischen Authentizität und Alltagstauglichkeit.
+Lege zuerst die Epoche deiner Darstellung fest, dann ergibt sich die passende Schuhform fast von selbst. Ein antiker Auftritt lebt von der Sandale, eine mittelalterliche Darstellung vom wendegenähten [Bundschuh](/bundschuhe/) oder Stiefel, eine barocke von Schnalle und Absatz. Regionale Trachtenformen wie der [Haferlschuh](/haferlschuhe/) sind dagegen deutlich jünger, als ihr rustikaler Eindruck vermuten lässt. Eine geordnete Übersicht findest du in unserem Bereich [Schuhe nach Epoche](/epochen/). Wenn du dich zwischen zwei Formen nicht entscheiden kannst, hilft der [Mittelalterschuhe-Vergleich](/mittelalterschuhe-vergleich/) bei der Abwägung zwischen Authentizität und Alltagstauglichkeit.
 
 ## Häufige Fragen
 

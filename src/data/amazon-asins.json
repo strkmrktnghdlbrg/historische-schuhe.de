@@ -165,5 +165,34 @@
       "B08R9B9GS7",
       "B01LD88G8A"
     ]
+  },
+  "haferlschuhe": {
+    "title": "Haferlschuhe & Trachtenschuhe Herren",
+    "keyword": "Haferlschuhe Herren Trachtenschuhe Leder",
+    "searchIndex": "Shoes",
+    "count": 8,
+    "asins": [
+      "B071RPDF3G",
+      "B0842SJS1W",
+      "B0HFR34KRL",
+      "B0HFRFPHW2",
+      "B0DHDBTVZ2",
+      "B0D4DWLJDL",
+      "B0H8D3CQGG"
+    ]
+  },
+  "trachtenschuhe-damen": {
+    "title": "Trachtenschuhe fuer Damen",
+    "keyword": "Trachtenschuhe Damen Dirndl Pumps",
+    "searchIndex": "Shoes",
+    "count": 6,
+    "asins": [
+      "B0H93TQSSR",
+      "B0H9CWMCXT",
+      "B0H6PLXLWQ",
+      "B0H87MQ4YV",
+      "B0H8LNZYSC",
+      "B0FHVWQM21"
+    ]
   }
 }
