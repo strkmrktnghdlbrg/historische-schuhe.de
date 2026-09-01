@@ -1,6 +1,6 @@
 # WEEKLY_CHECKLIST — historische-schuhe.de (Q4 2026)
 
-> **Stand 2026-08-31: Die Wetten 1 bis 4 sind vollständig umgesetzt, siehe `output/UMSETZUNG-2026-08-31.md`.** Abgehakte Punkte sind erledigt. Offen bleiben der Merge von PR #1 nach `main` (löst den Deploy aus), danach der IndexNow-Ping und die Live-Prüfung der 301er, sowie die Messpunkte in Woche 6, 9 und 12. Wette 5 (Lotus- und 20er-Upgrades) ist bewusst nicht gestartet: Sie ist im Plan als Kür nach gemessener Wirkung der Wetten 2 und 3 markiert.
+> **Stand 2026-08-31: Die Wetten 1 bis 4 sind vollständig umgesetzt, siehe `output/UMSETZUNG-2026-08-31.md`.** Abgehakte Punkte sind erledigt. **Deploy am 01.09. erfolgt** (PR #1 gemergt, Workflow grün, alle 30 epages-Ziele live mit 1 Hop auf 200 geprüft, 56 URLs an IndexNow gemeldet). Offen bleiben nur noch die Messpunkte in Woche 6, 9 und 12. Wette 5 (Lotus- und 20er-Upgrades) ist bewusst nicht gestartet: Sie ist im Plan als Kür nach gemessener Wirkung der Wetten 2 und 3 markiert.
 
 Standalone-Checkliste für die ausführende Session. Kontext: `output/BRIEF.md` + `output/BATTLE_PLAN.md` in diesem Ordner. Projekt-Repo-Root = Ordner über `Fable5-SEO-War-Room/`. Budget ≈ 5 h/Woche.
 
@@ -29,8 +29,8 @@ Standalone-Checkliste für die ausführende Session. Kontext: `output/BRIEF.md` 
 
 - [x] [Sonnet] Neuen Artikel `/schuhe-selber-machen-mittelalter/` schreiben (Long-Read ≥2.000 Wörter): wendegenähte Konstruktion Schritt für Schritt, Werkzeug, Leder-Auswahl, Schnittmuster-Quellen, Anfängerfehler, Bezug zu Christian Pohens Werkstatt-Tradition der Domain (ohne erfundene Details), FAQ. Silo `ratgeber`. Amazon-Gruppe `schuhpflege` einbinden (Werkzeug-Gruppe nur, wenn echte passende Produkte via PA-API gefunden werden).
 - [x] [Sonnet] Work-shop-Redirect-Regel in `.htaccess` aktivieren, Build, Deploy, curl-Check aller 5 Mapping-Muster.
-- [ ] [Sonnet] Neue URL an IndexNow melden (Bing).
-- [ ] [Manual] GSC-Check: Property sammelt Daten? Sitemap-Status „Erfolgreich"?
+- [x] [Sonnet] Neue URL an IndexNow melden (Bing). **Erledigt 01.09.: alle 56 URLs gemeldet, HTTP 200.**
+- [x] [Manual] GSC-Check: Property sammelt Daten? Sitemap-Status „Erfolgreich"? **Erledigt: Sitemap eingereicht, 0 Fehler, 0 Warnungen.**
 
 ## Woche 3–4 — Konsolidierung (Wette 3, Teil 1)
 

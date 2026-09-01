@@ -112,9 +112,21 @@ Kein horizontaler Überlauf gemessen (`scrollWidth == innerWidth`).
 - **0** Em-Dashes im Build, echte Umlaute (ein Ausrutscher in den Frontmatter-Beschreibungen wurde korrigiert).
 - Redirect-Regeln gegen die echten Broken-Backlink-Ziele simuliert: 45/45 zugeordnet.
 
-## Offen
+## Deploy am 2026-09-01
 
-1. **Merge von PR #1 nach `main`.** Erst der Push auf `main` löst den Deploy nach A2 aus. Bis dahin sind die 301er und die neuen Seiten nicht live. Der Merge wurde bewusst dem Menschen überlassen, weil er auf Produktion deployt.
-2. **Nach dem Deploy:** die 301er live gegenprüfen (`curl -I` auf drei Ziele aus `broken_targets.json`, Erwartung 301 ohne Kette) und die 7 neuen URLs an IndexNow melden. Google wird nicht angestoßen.
-3. **Bilder für `/trachtenschuhe-damen/` und `/trachtenschuhe-herren/`:** Wikimedia Commons hat zu Trachtenschuhen nichts Brauchbares. Beide Seiten laufen auf den Gradient-Fallback, wie `schuhe-der-1980er-jahre`. Bei Bedarf eigenes Bildmaterial nachliefern.
-4. **Messpunkte** aus dem Plan bleiben gültig: Woche 6 (broken Backlinks < 10 im DataForSEO-Refresh), Woche 9 (`mittelalter schuhe` oder `bundschuhe` Top 30), Woche 12 (Quartalsbilanz). Vorher-Werte für die Nachmessung stehen oben: 376 Impressionen, 4 Klicks, Ø-Position 55,8 im Zeitraum 01.06.–30.08.2026.
+PR #1 gemergt (`c114415`), Workflow "Build & Deploy to cPanel" grün (Run 33502796666).
+
+Vor dem Merge war `main` durch den nächtlichen Amazon-Refresh weitergelaufen. Die Konflikte lagen ausschließlich in generierten Dateien (`amazon-products.json`, `dist/`). Statt beide Fassungen von Hand zu mischen, wurden sie nach dem Merge neu erzeugt, sodass die frischen Preise und die neuen Produktgruppen zusammen drin sind.
+
+**Live gegengeprüft:**
+
+- Alle 7 neuen Seiten liefern 200.
+- Die 3 Konsolidierungs-301er und `/blog/` → `/` greifen.
+- **Alle 30 epages-Ziele: 1 Hop, HTTP 200, keine Kette.** Dazu `/W-wie-Wendeschuhe` → `/wendegenaehte-schuhe-erklaert/`. Damit fließen alle 47 Backlinks wieder auf eine echte Seite: 15 auf den Wendegenäht-Ratgeber, 15 auf `/schuhtypen/`, 4 auf die neue DIY-Seite, 3 aufs Hochmittelalter, der Rest verteilt.
+- DOM-Reihenfolge live bestätigt: `h1 → Antwortblock → Affiliate-Banner → Hero-Bild`.
+- JSON-LD live: Article, BreadcrumbList, FAQPage.
+- **IndexNow:** alle 56 URLs gemeldet, HTTP 200. Nicht nur die 7 neuen, weil durch die Template-Änderungen (Schema, Antwortblock, H1) faktisch jede Seite aktualisiert wurde. Google wurde nicht angestoßen.
+
+## Offen
+1. **Bilder für `/trachtenschuhe-damen/` und `/trachtenschuhe-herren/`:** Wikimedia Commons hat zu Trachtenschuhen nichts Brauchbares. Beide Seiten laufen auf den Gradient-Fallback, wie `schuhe-der-1980er-jahre`. Bei Bedarf eigenes Bildmaterial nachliefern.
+2. **Messpunkte** aus dem Plan bleiben gültig: Woche 6 (broken Backlinks < 10 im DataForSEO-Refresh), Woche 9 (`mittelalter schuhe` oder `bundschuhe` Top 30), Woche 12 (Quartalsbilanz). Vorher-Werte für die Nachmessung stehen oben: 376 Impressionen, 4 Klicks, Ø-Position 55,8 im Zeitraum 01.06.–30.08.2026.
