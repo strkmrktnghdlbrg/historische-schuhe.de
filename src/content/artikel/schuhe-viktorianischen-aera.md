@@ -16,7 +16,7 @@ Kaum eine Epoche hat dem Schuh so viel gesellschaftliche Bedeutung zugeschrieben
 
 ## Warum Stiefeletten das Bild der Epoche prägten
 
-Die viktorianische Mode (benannt nach der langen Regierungszeit von Königin Victoria im [19. Jahrhundert](/schuhe-19-jahrhundert/)) stellte den knöchelhohen Stiefel ins Zentrum. Für Damen waren bodenlange Röcke üblich, die den Schuh meist verdeckten. Gerade deshalb galt die Stiefelette als angemessen: Sie umschloss den Knöchel und entsprach den strengen Vorstellungen von Schicklichkeit, nach denen ein entblößtes Bein als unziemlich galt.
+Die viktorianische Mode (benannt nach der langen Regierungszeit von Königin Victoria im [19. Jahrhundert](/schuhe-des-19-jahrhunderts/)) stellte den knöchelhohen Stiefel ins Zentrum. Für Damen waren bodenlange Röcke üblich, die den Schuh meist verdeckten. Gerade deshalb galt die Stiefelette als angemessen: Sie umschloss den Knöchel und entsprach den strengen Vorstellungen von Schicklichkeit, nach denen ein entblößtes Bein als unziemlich galt.
 
 Typisch für die Zeit waren vor allem zwei Verschlussarten:
 

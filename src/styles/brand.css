@@ -95,9 +95,21 @@ section{padding:72px 0}
 .prose a{color:var(--oxblood);text-decoration:underline;text-underline-offset:3px}
 .prose strong{color:var(--ink);font-weight:600}
 .prose blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 18px;margin:0 0 18px;color:#6a5440;font-style:italic}
-.prose table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}
-.prose th,.prose td{border:1px solid var(--line);padding:10px 12px;text-align:left}
-.prose th{background:var(--parchment-2);color:var(--ink)}
+/* Tabellen scrollen mobil in ihrem eigenen Rahmen, statt die Seite quer zu
+   schieben. Den Wrapper setzt integrations/rehype-table-wrap.mjs. */
+.prose .tablewrap{overflow-x:auto;margin:0 0 22px;-webkit-overflow-scrolling:touch}
+.prose table{width:100%;border-collapse:collapse;margin:0;font-size:15px}
+.prose th,.prose td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.prose th{background:var(--parchment-2);color:var(--ink);white-space:nowrap}
+
+/* Antwortblock: die erste Antwort auf die Suchanfrage, direkt unter der H1 und
+   vor Affiliate-Banner und Hero-Bild. Siehe src/pages/[slug].astro. */
+.answer{background:var(--linen);border:1px solid var(--line);border-left:3px solid var(--brass);
+  border-radius:12px;padding:18px 22px;margin:0 0 26px;font-size:17px;line-height:1.7;color:#42342a}
+.answer p:last-child{margin-bottom:0}
+.answer strong{color:var(--ink);font-weight:600}
+.answer a{color:var(--oxblood);text-decoration:underline;text-underline-offset:3px}
+.answer-top{margin-top:22px}
 
 @media(max-width:900px){
   .navlinks{display:none}

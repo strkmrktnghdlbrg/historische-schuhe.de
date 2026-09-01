@@ -16,7 +16,7 @@ Wer an die Napoleonischen Kriege denkt, hat oft die großen Schlachten und präc
 
 ## Wie der Marschstiefel der Soldaten um 1800 aufgebaut war
 
-Das gängige Schuhwerk der einfachen Infanterie war kein hoher Reiterstiefel, sondern in vielen Armeen ein niedriger Schnürschuh oder Halbschuh aus kräftigem Rindsleder, oft kombiniert mit Gamaschen, die den Unterschenkel schützten und Schmutz fernhielten. Höhere [Stiefel trugen vor allem Kavallerie und Offiziere](/schuhe-19-jahrhundert/), während die Masse der marschierenden Infanterie mit robustem, aber schlichtem Schuhwerk auskommen musste.
+Das gängige Schuhwerk der einfachen Infanterie war kein hoher Reiterstiefel, sondern in vielen Armeen ein niedriger Schnürschuh oder Halbschuh aus kräftigem Rindsleder, oft kombiniert mit Gamaschen, die den Unterschenkel schützten und Schmutz fernhielten. Höhere [Stiefel trugen vor allem Kavallerie und Offiziere](/schuhe-des-19-jahrhunderts/), während die Masse der marschierenden Infanterie mit robustem, aber schlichtem Schuhwerk auskommen musste.
 
 Typisch für die Machart waren:
 
@@ -36,7 +36,7 @@ Dieses Prinzip war nicht aus Nachlässigkeit gewählt, sondern hatte praktische 
 - Bei nachlassender Sohle ließen sich die Stiefel tauschen, also links und rechts wechseln, um den Verschleiß gleichmäßiger zu verteilen
 - Ein einheitlicher Schnitt vereinfachte die Lagerhaltung in großen Beständen
 
-Der Preis dafür waren Druckstellen und Blasen, besonders solange das Leder noch hart war. Die Vorstellung, dass ein Schuh von Anfang an passt, ist historisch betrachtet eine recht junge. Auch [frühere Epochen kannten dieses Prinzip](/schuhe-des-18-jahrhunderts-in-europa/) schon, wie sich am Beispiel der [römischen Legionärsschuhe](/roemische-legionaersschuhe/) zeigt, deren genagelte Sohlen ebenfalls auf Robustheit statt auf individuelle Passform setzten.
+Der Preis dafür waren Druckstellen und Blasen, besonders solange das Leder noch hart war. Die Vorstellung, dass ein Schuh von Anfang an passt, ist historisch betrachtet eine recht junge. Auch [frühere Epochen kannten dieses Prinzip](/schuhe-des-18-jahrhunderts/) schon, wie sich am Beispiel der [römischen Legionärsschuhe](/roemische-legionaersschuhe/) zeigt, deren genagelte Sohlen ebenfalls auf Robustheit statt auf individuelle Passform setzten.
 
 ## Logistik und Versorgung einer marschierenden Armee
 

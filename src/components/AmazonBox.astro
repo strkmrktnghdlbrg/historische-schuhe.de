@@ -38,7 +38,7 @@ const hasPrice = Boolean(p?.price && priceDate);
               {p.price}
               {p.isPrime && <span class="amz-prime">Prime</span>}
             </div>
-            <div class="amz-stand">Stand: {priceDate} — Preis kann sich geändert haben.</div>
+            <div class="amz-stand">Stand: {priceDate}, Preis kann sich geändert haben.</div>
           </>
         ) : (
           <div class="amz-stand amz-stand-only">Preis wird bei Amazon angezeigt.</div>

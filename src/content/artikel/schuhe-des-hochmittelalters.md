@@ -49,7 +49,7 @@ Diese Spezialisierung hat Folgen für das Produkt selbst:
 - ein lokaler Markt, der regelmäßige Nachfrage sichert
 - erste Ansätze von Standards und Qualitätsanspruch
 
-Der Schuh wird damit vom reinen Selbstversorgungsobjekt zu einer Ware, die man kauft. Das ist ein leiser, aber wichtiger Wendepunkt. Wer sich für die handwerkliche und kulturelle Einordnung der gesamten Zeitspanne interessiert, findet im Beitrag zu den [Schuhen des Mittelalters](/schuhe-des-mittelalters/) weitere Einordnung.
+Der Schuh wird damit vom reinen Selbstversorgungsobjekt zu einer Ware, die man kauft. Das ist ein leiser, aber wichtiger Wendepunkt. Wer sich für die handwerkliche und kulturelle Einordnung der gesamten Zeitspanne interessiert, findet im Beitrag zu den [Schuhen im Mittelalter](/schuhe-im-mittelalter/) weitere Einordnung.
 
 ## Erste modische Akzente
 
@@ -59,7 +59,7 @@ Gegen Ende der Epoche, also im 12. und frühen 13. Jahrhundert, treten erste kla
 - gestickte oder farbig abgesetzte Partien
 - sorgfältiger gearbeitete Schäfte bei höhergestellten Personen
 
-Noch sind diese Akzente zurückhaltend. Die extremen Schnabelschuhe und überlangen Spitzen, die man häufig mit dem Mittelalter verbindet, gehören erst in die spätere Zeit. Das Hochmittelalter legt jedoch die Grundlage für diese Entwicklung. Wie sich die Linie danach fortsetzt, zeigt sich im Übergang zu den [Renaissance-Schuhen](/renaissance-schuhe/), die das Spiel mit Form und Material weitertreiben.
+Noch sind diese Akzente zurückhaltend. Die extremen [Schnabelschuhe](/schnabelschuhe/) und überlangen Spitzen, die man häufig mit dem Mittelalter verbindet, gehören erst in die spätere Zeit. Das Hochmittelalter legt jedoch die Grundlage für diese Entwicklung. Wie sich die Linie danach fortsetzt, zeigt sich im Übergang zu den [Renaissance-Schuhen](/renaissance-schuhe/), die das Spiel mit Form und Material weitertreiben.
 
 Für alle, die diese Ästhetik heute nachempfinden möchten, etwa für Reenactment oder LARP, gilt: Wendeschuhe in schlichter, knöchelhoher Form treffen die Epoche am ehesten. Achte beim Kauf auf vegetabil gegerbtes Leder und eine glaubwürdige Naht. Solche Repliken werden von spezialisierten Anbietern geführt. Ein Hinweis in eigener Sache: Manche der von uns verlinkten Shops vergüten uns eine kleine Provision, am Preis für dich ändert das nichts.
 

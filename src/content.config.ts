@@ -23,6 +23,12 @@ const artikel = defineCollection({
     readMin: z.number().default(7),
     // optionaler Amazon-Produktgruppen-Key aus amazon-asins.json (zeigt Box-Grid unter dem Artikel)
     amazonGroup: z.string().optional(),
+    // Antwortblock (Centerpiece). Steht bewusst im Frontmatter und NICHT im Rumpf:
+    // im Rumpf landet er hinter Affiliate-Banner und Hero-Bild, also weit unter
+    // der Falz. Google extrahiert die Centerpiece Annotation aus den ersten rund
+    // 400 Zeichen nach der h1 - was dort steht, ist die Aussage der Seite.
+    // Erlaubt sind **fett** und [Text](/ziel/), mehr braucht ein Antwortblock nicht.
+    answer: z.string().optional(),
   }),
 });
 

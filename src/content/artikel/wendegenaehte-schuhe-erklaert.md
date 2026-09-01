@@ -44,6 +44,8 @@ Achte auf gleichmäßige, dichte Stiche, [sauber verarbeitetes Leder](/a-und-o-s
 
 Weil die Sohle direkt beansprucht wird, lohnt sich regelmäßige Pflege besonders. Wer das Leder [einfettet und imprägniert](/leder-pflegen-historische-schuhe/), hält Nässe fern und beugt Rissen vor. Eine neu aufgesetzte Sohle macht selbst durchgelaufene Schuhe wieder einsatzbereit, was bei industriell verklebten Schuhen kaum möglich ist.
 
+Wer die Machart nicht nur verstehen, sondern selbst anwenden will, findet die einzelnen Arbeitsschritte in der Anleitung zum [Schuhe selber machen](/schuhe-selber-machen-mittelalter/). Der bekannteste wendegenähte Vertreter ist der [Bundschuh](/bundschuhe/).
+
 Ob ein wendegenähter Schuh oder ein robusterer Stiefel besser zu dir passt, hängt vom Einsatz ab. Unser [Mittelalterschuhe-Vergleich](/mittelalterschuhe-vergleich/) stellt beide Welten gegenüber.
 
 ## Häufige Fragen

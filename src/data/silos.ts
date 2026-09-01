@@ -36,10 +36,13 @@ export const silos: Record<SiloKey, SiloDef> = {
     label: 'Schuhtypen',
     hubHref: '/schuhtypen/',
     links: [
+      { href: '/bundschuhe/', label: 'Bundschuhe' },
+      { href: '/schnabelschuhe/', label: 'Schnabelschuhe' },
       { href: '/mittelalterliche-stiefel-schuhe/', label: 'Mittelalterliche Stiefel' },
       { href: '/roemische-sandalen-schuhe/', label: 'Römische Sandalen' },
-      { href: '/renaissance-pantoffeln-schuhe/', label: 'Renaissance-Pantoffeln' },
-      { href: '/barocke-schuhschnallen-schuhe/', label: 'Barocke Schuhschnallen' },
+      { href: '/haferlschuhe/', label: 'Haferlschuhe' },
+      { href: '/trachtenschuhe-damen/', label: 'Trachtenschuhe Damen' },
+      { href: '/trachtenschuhe-herren/', label: 'Trachtenschuhe Herren' },
     ],
   },
   ratgeber: {
@@ -47,6 +50,7 @@ export const silos: Record<SiloKey, SiloDef> = {
     hubHref: '/ratgeber/',
     links: [
       { href: '/geschichte-der-schuhe/', label: 'Geschichte der Schuhe' },
+      { href: '/schuhe-selber-machen-mittelalter/', label: 'Schuhe selber machen' },
       { href: '/pflege-fuer-schuhe/', label: 'Schuhe richtig pflegen' },
       { href: '/schuhgroesse-passform-historische-schuhe/', label: 'Schuhgröße & Passform' },
       { href: '/beste-shops-apps-historische-schuhe-kaufen/', label: 'Beste Shops & Apps zum Kaufen' },

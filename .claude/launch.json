@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "historische-schuhe-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "4878"],
+      "port": 4878
+    },
+    {
       "name": "mockup",
       "runtimeExecutable": "node",
       "runtimeArgs": ["mockups/server.js"],

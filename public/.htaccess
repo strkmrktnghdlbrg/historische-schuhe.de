@@ -46,7 +46,7 @@
   RewriteRule ^schuhe-der-aegyptischen-pharaonen-status-und-symbolik/?$   /schuhe-der-aegyptischen-pharaonen/   [R=301,L]
   RewriteRule ^chinesische-lotus-schuhe-geschichte-und-bedeutung/?$   /chinesische-lotus-schuhe/   [R=301,L]
   RewriteRule ^stiefel-schuhe-im-militaer-des-19-jahrhunderts/?$   /stiefel-schuhe-19-jahrhunderts/   [R=301,L]
-  RewriteRule ^schuhe-des-18-jahrhunderts-in-europa-vielfalt-und-mode/?$   /schuhe-des-18-jahrhunderts-in-europa/   [R=301,L]
+  RewriteRule ^schuhe-des-18-jahrhunderts-in-europa-vielfalt-und-mode/?$   /schuhe-des-18-jahrhunderts/   [R=301,L]
   RewriteRule ^schuhe-der-1950er-jahre-beginn-der-moderne/?$   /schuhe-der-1950er-jahre/   [R=301,L]
   RewriteRule ^schuhe-des-hochmittelalters-alltag-und-adel/?$   /schuhe-des-hochmittelalters/   [R=301,L]
   RewriteRule ^japanische-geta-schuhe-tradition-und-symbolik/?$   /japanische-geta-schuhe/   [R=301,L]
@@ -59,7 +59,7 @@
   RewriteRule ^tuerkische-reitstiefel-schuhe-funktion-und-dekoration/?$   /tuerkische-reitstiefel-schuhe/   [R=301,L]
   RewriteRule ^renaissance-pantoffeln-schuhe-stil-und-statussymbol/?$   /renaissance-pantoffeln-schuhe/   [R=301,L]
   RewriteRule ^schuhe-des-19-jahrhunderts-mode-und-emanzipation/?$   /schuhe-des-19-jahrhunderts/   [R=301,L]
-  RewriteRule ^schuhe-des-mittelalters-materialien-und-herstellung/?$   /schuhe-des-mittelalters/   [R=301,L]
+  RewriteRule ^schuhe-des-mittelalters-materialien-und-herstellung/?$   /schuhe-im-mittelalter/   [R=301,L]
   RewriteRule ^schuhe-im-mittelalter-symbolik-und-bedeutung/?$   /schuhe-im-mittelalter/   [R=301,L]
   RewriteRule ^barocke-damenschuhe-mode-und-einfluss/?$   /barocke-damenschuhe/   [R=301,L]
   RewriteRule ^barocke-schuhschnallen-schuhe-modeaccessoire-und-statussymbol/?$   /barocke-schuhschnallen-schuhe/   [R=301,L]
@@ -71,6 +71,69 @@
 
   # Catch-all fuer restliche /thema/-Pfade
   RewriteRule ^thema/                         /                              [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Konsolidierung 2026-08-31: drei Duplikat-Cluster auf je einen Pillar
+  # zusammengefuehrt. Die aufgeloesten Artikel hatten denselben Suchintent wie
+  # ihr Ziel und haben sich gegenseitig kannibalisiert. Ihre Inhalte stecken
+  # jetzt im Zielartikel, die alten URLs leiten dorthin.
+  # -------------------------------------------------------------------------
+  RewriteRule ^schuhe-des-mittelalters/?$              /schuhe-im-mittelalter/        [R=301,L]
+  RewriteRule ^schuhe-des-18-jahrhunderts-in-europa/?$ /schuhe-des-18-jahrhunderts/   [R=301,L]
+  RewriteRule ^schuhe-19-jahrhundert/?$                /schuhe-des-19-jahrhunderts/   [R=301,L]
+
+  # -------------------------------------------------------------------------
+  # Alt-Shop "CP-Schuhe" (epages-Shop der Domain bis ca. 2015).
+  # 47 Backlinks aus der Reenactment-Community (mittelalterforum.com,
+  # mastermyr.de, LARP-Foren, pluspedia) zeigen bis heute auf diese URLs und
+  # liefen allesamt in einen 404. Die Ziele stehen in
+  # Fable5-SEO-War-Room/data/dataforseo/broken_targets.json.
+  #
+  # Die Alt-URLs sind query-basiert (?ObjectPath=/Shops/61580448/...), deshalb
+  # wird auf QUERY_STRING gematcht. Das "?" am Ende der Substitution verwirft
+  # die alten epages-Parameter - ohne das haengen sie am neuen Ziel.
+  # -------------------------------------------------------------------------
+
+  # "W-schuhe" war die Wendeschuh-Kategorie (10 Links, davon 7 dofollow).
+  RewriteCond %{QUERY_STRING} (Categories/W-schuhe|Original_Wendeschuhe|Products/W-[0-9]) [NC]
+  RewriteRule ^epages/    /wendegenaehte-schuhe-erklaert/?    [R=301,L]
+
+  # "Work-shop" war die Kurs-/Selbermachen-Kategorie (4 Links, alle dofollow,
+  # Ankertext "Mittelalter und Wikingerschuhe kaufen - basteln").
+  RewriteCond %{QUERY_STRING} Categories/Work-shop [NC]
+  RewriteRule ^epages/    /schuhe-selber-machen-mittelalter/?    [R=301,L]
+
+  # "HS-schuhe" = Hochmittelalter-Linie des Alt-Shops.
+  RewriteCond %{QUERY_STRING} Categories/HS-schuhe [NC]
+  RewriteRule ^epages/    /schuhe-des-hochmittelalters/?    [R=301,L]
+
+  # Holzschuhe und Trippen.
+  RewriteCond %{QUERY_STRING} (Categories/Holzschuhe|Trippen) [NC]
+  RewriteRule ^epages/    /schuhe-im-mittelalter/?    [R=301,L]
+
+  RewriteCond %{QUERY_STRING} Geschichte(%20|\+)?Schuh [NC]
+  RewriteRule ^epages/    /geschichte-der-schuhe/?    [R=301,L]
+
+  # Kinderschuhe (K-Modelle): Groessen- und Passformfrage.
+  RewriteCond %{QUERY_STRING} (Kinderschuhe|Products/K-[0-9]) [NC]
+  RewriteRule ^epages/    /schuhgroesse-passform-historische-schuhe/?    [R=301,L]
+
+  # Gewandung und Kleinteile (Tunika, Hose, Knochenwuerfel, Haeckchen und
+  # Oesen). Auf einer Schuhseite gibt es dafuer kein ehrliches Ziel, deshalb
+  # Startseite statt eines unpassenden Schuh-Hubs.
+  RewriteCond %{QUERY_STRING} (Tunika|Products/%22Hose|Krims|Knochenw|ckchen) [NC]
+  RewriteRule ^epages/    /?    [R=301,L]
+
+  # Restliche Produkt- und Kategorie-URLs des Alt-Shops (HS-*, M-*, FR-*
+  # sowie ViewObjectID-Links ohne ObjectPath).
+  RewriteRule ^epages/    /schuhtypen/?    [R=301,L]
+
+  # pluspedia.org verlinkt diese Alt-URL im Artikel "Wendeschuh".
+  RewriteRule ^W-wie-Wendeschuhe/?$    /wendegenaehte-schuhe-erklaert/    [R=301,L]
+
+  # /blog/ ist eine WordPress-Leiche: liefert 404, steht aber noch im Google-
+  # Index und sammelt laut Search Console Impressionen auf Position 2.
+  RewriteRule ^blog(/.*)?$    /    [R=301,L]
 </IfModule>
 
 # ---------------------------------------------------------------------------

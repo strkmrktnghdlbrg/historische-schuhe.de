@@ -5,6 +5,8 @@ import { silos } from '../data/silos.ts';
 import { getImage } from '../lib/images.ts';
 import Figure from '../components/Figure.astro';
 import AmazonBoxGrid from '../components/AmazonBoxGrid.astro';
+import { faqSchema } from '../lib/faq.ts';
+import { renderAnswer } from '../lib/answer.ts';
 
 export async function getStaticPaths() {
   const artikel = await getCollection('artikel');
@@ -34,13 +36,43 @@ const related = all
 const dateStr = (a.data.updated ?? a.data.pubDate).toLocaleDateString('de-DE', {
   year: 'numeric', month: 'long', day: 'numeric',
 });
+
+// Strukturierte Daten. Die FAQ wird aus dem sichtbaren Text geparst, damit
+// Schema und Seite nicht auseinanderlaufen (siehe src/lib/faq.ts).
+const pageUrl = new URL(`/${a.id}/`, Astro.site).href;
+const faq = faqSchema(a.body);
+const answer = renderAnswer(a.data.answer);
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: sidebar.label, item: new URL(sidebar.hubHref, Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: a.data.title, item: pageUrl },
+  ],
+};
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: a.data.title,
+  description: a.data.description,
+  mainEntityOfPage: pageUrl,
+  datePublished: a.data.pubDate.toISOString().slice(0, 10),
+  dateModified: (a.data.updated ?? a.data.pubDate).toISOString().slice(0, 10),
+  inLanguage: 'de-DE',
+  publisher: { '@type': 'Organization', name: 'historische-schuhe.de', url: new URL('/', Astro.site).href },
+  ...(image ? { image: new URL(image.src, Astro.site).href } : {}),
+};
 ---
 <BaseLayout title={`${a.data.title} | historische-schuhe.de`} description={a.data.description} ogType="article">
+  <script type="application/ld+json" set:html={JSON.stringify(article)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  {faq && <script type="application/ld+json" set:html={JSON.stringify(faq)} />}
   <section style="padding:48px 0 64px">
     <div class="wrap art-layout">
       <article>
         <a href={sidebar.hubHref} class="crumb">← {sidebar.label}</a>
-        <h1 style="font-size:46px;margin:14px 0 14px;line-height:1.05">{a.data.title}</h1>
+        <h1 class="art-h1">{a.data.title}</h1>
         <p class="lede">{a.data.description}</p>
         <div class="art-meta">
           <span>{a.data.icon} {a.data.category}</span>
@@ -49,6 +81,10 @@ const dateStr = (a.data.updated ?? a.data.pubDate).toLocaleDateString('de-DE', {
           <span>·</span>
           <span>{a.data.readMin} Min. Lesezeit</span>
         </div>
+        {/* Antwortblock zuerst: Er ist das Centerpiece der Seite. Affiliate-Banner
+            und Hero-Bild schieben ihn sonst um mehrere hundert Pixel nach unten,
+            und genau dort liest Google die Aussage der Seite nicht mehr. */}
+        {answer && <div class="answer answer-top" set:html={answer} />}
         {a.data.type === 'money' && (
           <div class="aff-banner">Anzeige: Dieser Beitrag enthält Affiliate-Links. Kaufst du darüber, erhalten wir ggf. eine kleine Provision, der Preis bleibt für dich gleich.</div>
         )}
@@ -92,6 +128,7 @@ const dateStr = (a.data.updated ?? a.data.pubDate).toLocaleDateString('de-DE', {
 
 <style>
   .art-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:start}
+  .art-h1{font-size:46px;margin:14px 0;line-height:1.05}
   .crumb{font-size:13.5px;font-weight:600;color:var(--oxblood)}
   .lede{font-size:19px;color:#5a4634;line-height:1.6;margin-bottom:16px}
   .art-meta{display:flex;flex-wrap:wrap;gap:9px;font-size:13px;color:var(--muted);padding-bottom:18px;border-bottom:1px solid var(--line)}
@@ -116,5 +153,11 @@ const dateStr = (a.data.updated ?? a.data.pubDate).toLocaleDateString('de-DE', {
     .art-layout{grid-template-columns:1fr}
     aside{position:static}
     .rel-grid{grid-template-columns:1fr}
+  }
+  /* Auf schmalen Schirmen kostet eine 46px-Ueberschrift drei Zeilen und
+     schiebt den Antwortblock nach unten. Das Centerpiece hat Vorrang. */
+  @media(max-width:600px){
+    .art-h1{font-size:32px;line-height:1.12}
+    .lede{font-size:17px}
   }
 </style>

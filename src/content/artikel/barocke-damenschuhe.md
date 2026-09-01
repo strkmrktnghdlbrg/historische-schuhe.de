@@ -29,7 +29,7 @@ So wurde der Schuh Teil einer durchkomponierten Erscheinung. Wie sehr der Hof al
 
 ## Hohe Absätze: Mode und Symbol zugleich
 
-Der erhöhte Absatz gehört zu den prägenden [Erfindungen dieser Zeit](/renaissance-schuhe/). Schon im 17. Jahrhundert setzte er sich an [europäischen Höfen](/schuhe-des-18-jahrhunderts-in-europa/) durch und wurde zunächst von Männern wie Frauen getragen. Der Absatz hob die Trägerin buchstäblich über den Boden, verlängerte optisch die Silhouette und betonte einen aufrechten, kontrollierten Gang, der als vornehm galt.
+Der erhöhte Absatz gehört zu den prägenden [Erfindungen dieser Zeit](/renaissance-schuhe/). Schon im 17. Jahrhundert setzte er sich an [europäischen Höfen des 18. Jahrhunderts](/schuhe-des-18-jahrhunderts/) durch und wurde zunächst von Männern wie Frauen getragen. Der Absatz hob die Trägerin buchstäblich über den Boden, verlängerte optisch die Silhouette und betonte einen aufrechten, kontrollierten Gang, der als vornehm galt.
 
 Bei Damenschuhen entwickelte sich der Absatz im Lauf der Epoche oft zu einer geschwungenen, nach innen gebogenen Form. Diese sogenannte gebogene oder taillierte Absatzform wirkte filigran und elegant. Wichtig zu wissen:
 

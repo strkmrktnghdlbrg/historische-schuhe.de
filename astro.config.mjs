@@ -3,10 +3,16 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 import outboundGate from './integrations/outbound-gate.mjs';
+import rehypeTableWrap from './integrations/rehype-table-wrap.mjs';
 // Canonical = www (siehe public/.htaccess: non-www -> www, HTTP -> HTTPS).
 export default defineConfig({
   site: 'https://www.historische-schuhe.de',
   trailingSlash: 'always',
+  markdown: {
+    // Tabellen brauchen mobil einen scrollbaren Rahmen, sonst schieben sie
+    // die ganze Seite quer. Siehe integrations/rehype-table-wrap.mjs.
+    rehypePlugins: [rehypeTableWrap],
+  },
   integrations: [outboundGate(), sitemap({
       // noindex-Seiten gehoeren nicht in die Sitemap (GSC meldet sie sonst
       // als "Durch noindex-Tag ausgeschlossen").
